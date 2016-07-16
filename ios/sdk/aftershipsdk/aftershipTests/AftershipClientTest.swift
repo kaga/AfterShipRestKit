@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Foundation
 import AfterShip
 
 class AftershipClientTest: XCTestCase {
@@ -31,6 +32,56 @@ class AftershipClientTest: XCTestCase {
 			switch result {
 			case .Success(let response):
 				XCTAssertNotNil(response);
+				
+				XCTAssertEqual(response.id, "A1B2C3D4", "Make sure the Tracking model is not garbage");
+				self.compareDate(response.createdAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 13));
+				self.compareDate(response.updatedAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 17));
+//				self.compareDate(response.lastUpdatedAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 17));
+//				XCTAssertEqual(response.trackingNumber, "012345678901");
+				XCTAssertEqual(response.slug, "express");
+				XCTAssertEqual(response.active, false);
+				XCTAssertNil(response.pushNotificationAndroidIds, "Empty array should return nil");
+				XCTAssertNil(response.customFields);
+				XCTAssertNil(response.customerName);
+				XCTAssertEqual(response.deliveryTimeInDay, 6);
+				XCTAssertNil(response.destinationCountryIsoCode);
+				
+				XCTAssertEqual(response.emails?.count, 1, "one email notification entry");
+				let email = (response.emails?.first)!;
+				XCTAssertEqual(email, "foo@bar.com");
+				
+				XCTAssertEqual(response.expectedDelivery, nil);
+				XCTAssertNil(response.pushNotificationIosIds, "Empty array should return nil");
+//				XCTAssertEqual(response.note, nil);
+				XCTAssertEqual(response.orderId, "");
+				XCTAssertEqual(response.orderIdPath, "");
+				XCTAssertEqual(response.shipmentPackageCount, 1);
+//				self.compareDate(response.shipmentPickupDate!, expectedDateComponents: (2016, 7, 16, 12, 39, 49));
+//				self.compareDate(response.shipmentDeliveryDate!, expectedDateComponents: (2016, 7, 16, 12, 39, 49));
+				XCTAssertNil(response.shipmentType);
+				XCTAssertNil(response.shipmentWeight);
+				XCTAssertNil(response.shipmentWeightUnit);
+				XCTAssertNil(response.signedBy);
+				XCTAssertNil(response.smsNotificationPhoneNumbers, "Empty array should return nil");
+				XCTAssertEqual(response.source, "api");
+				XCTAssertEqual(response.tag, TrackingStatus.Delivered);
+				XCTAssertEqual(response.title, "012345678901");
+				XCTAssertEqual(response.trackedCount, 1);
+				XCTAssertEqual(response.uniqueToken, "deprecated");
+				XCTAssertEqual(response.checkpoints?.count, 1, "Should have exactly 1 object");
+				
+				let checkpoint: Checkpoint = (response.checkpoints?.first)!;
+				XCTAssertEqual(checkpoint.slug, "express");
+				XCTAssertEqual(checkpoint.city, "HONG KONG");
+				self.compareDate(checkpoint.createdAt!, expectedDateComponents: (2016, 7, 16, 14, 02, 17));
+				XCTAssertEqual(checkpoint.location, "HONG KONG");
+				XCTAssertEqual(checkpoint.countryName, nil);
+				XCTAssertEqual(checkpoint.message, "Foo has picked up the shipment");
+				XCTAssertEqual(checkpoint.countryIsoCode, nil);
+				XCTAssertEqual(checkpoint.tag, TrackingStatus.InTransit);
+				self.compareDate(checkpoint.checkPointTime!, expectedDateComponents: (2016, 7, 16, 12, 39, 49));
+				XCTAssertEqual(checkpoint.state, nil);
+				XCTAssertEqual(checkpoint.zip, nil);
 			default:
 				XCTFail();
 			}
@@ -69,7 +120,7 @@ class AftershipClientTest: XCTestCase {
 	}
 	
 	func testGetTrackingNonJsonResponse() {
-		agent.response = "String response";
+		agent.data = "String response".dataUsingEncoding(NSUTF8StringEncoding);
 		
 		let requestExpectation = expectationWithDescription("Get Tracking with non-json response");
 		
@@ -88,28 +139,14 @@ class AftershipClientTest: XCTestCase {
 }
 
 class MockRequestAgent: RequestAgent {
-	var response: AnyObject = [
-		"meta": [
-			"code":200
-		],
-		"data":[
-			"tracking":[
-				"id":"A1B2C3D4"
-			]
-		]
-	];
+	var data: NSData?;
+	
+	init() {
+		let url = NSBundle(forClass: self.dynamicType).URLForResource("Demo_GetTracking", withExtension: "json", subdirectory: nil);
+		self.data = NSData(contentsOfURL: url!)!;
+	}
 	
 	func performRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> Void {
-		switch response {
-		case let jsonResponse as [String: AnyObject]:
-			let data = try! NSJSONSerialization.dataWithJSONObject(jsonResponse, options: .PrettyPrinted);
-			completionHandler(data, nil, nil);
-		case let stringResponse as String:
-			let data = stringResponse.dataUsingEncoding(NSUTF8StringEncoding);
-			completionHandler(data, nil, nil);
-		default:
-			completionHandler(nil, nil, nil);
-		}
-		
+		completionHandler(data, nil, nil);
 	}
 }

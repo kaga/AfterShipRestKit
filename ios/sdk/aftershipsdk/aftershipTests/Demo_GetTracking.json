@@ -1,0 +1,57 @@
+{
+    "meta": {
+        "code": 200
+    },
+    "data": {
+        "tracking": {
+            "id": "A1B2C3D4",
+            "created_at": "2016-07-16T14:02:13+00:00",
+            "updated_at": "2016-07-16T14:02:17+00:00",
+            "last_updated_at": "2016-07-16T14:02:17+00:00",
+            "tracking_number": "012345678901",
+            "slug": "express",
+            "active": false,
+            "android": [],
+            "custom_fields": null,
+            "customer_name": null,
+            "delivery_time": 6,
+            "destination_country_iso3": null,
+            "emails": ["foo@bar.com"],
+            "expected_delivery": null,
+            "ios": [],
+            "note": null,
+            "order_id": "",
+            "order_id_path": "",
+            "origin_country_iso3": null,
+            "shipment_package_count": 1,
+            "shipment_pickup_date": "2016-07-16T12:39:49",
+            "shipment_delivery_date": "2016-07-16T16:23:30",
+            "shipment_type": null,
+            "shipment_weight": null,
+            "shipment_weight_unit": null,
+            "signed_by": null,
+            "smses": [],
+            "source": "api",
+            "tag": "Delivered",
+            "title": "012345678901",
+            "tracked_count": 1,
+            "unique_token": "deprecated",
+            "checkpoints": [
+                {
+                    "slug": "express",
+                    "city": "HONG KONG",
+                    "created_at": "2016-07-16T14:02:17+00:00",
+                    "location": "HONG KONG",
+                    "country_name": null,
+                    "message": "Foo has picked up the shipment",
+                    "country_iso3": null,
+                    "tag": "InTransit",
+                    "checkpoint_time": "2016-07-16T12:39:49",
+                    "coordinates": [],
+                    "state": null,
+                    "zip": null
+                }
+            ]
+        }
+    }
+}

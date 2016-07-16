@@ -20,6 +20,9 @@
 		122ECD941D38F954000CD05E /* AftershipClient+GetTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */; };
 		122ECD961D38FFD4000CD05E /* NSURLComponentsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */; };
 		122ECD981D39020A000CD05E /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD971D39020A000CD05E /* StringTest.swift */; };
+		122ECD9A1D39E385000CD05E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD991D39E385000CD05E /* Response.swift */; };
+		122ECD9C1D39E62A000CD05E /* Demo_GetTracking.json in Resources */ = {isa = PBXBuildFile; fileRef = 122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */; };
+		122ECDA01D39EE7E000CD05E /* ResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */; };
 		12D562001D379083006C1399 /* aftership.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D561FF1D379083006C1399 /* aftership.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12D562071D379083006C1399 /* AfterShip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D561FC1D379083006C1399 /* AfterShip.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +51,9 @@
 		122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClient+GetTrackings.swift"; sourceTree = "<group>"; };
 		122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLComponentsTest.swift; sourceTree = "<group>"; };
 		122ECD971D39020A000CD05E /* StringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTest.swift; sourceTree = "<group>"; };
+		122ECD991D39E385000CD05E /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Demo_GetTracking.json; sourceTree = "<group>"; };
+		122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTest.swift; sourceTree = "<group>"; };
 		12D561FC1D379083006C1399 /* AfterShip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D561FF1D379083006C1399 /* aftership.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aftership.h; sourceTree = "<group>"; };
 		12D562011D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 				122ECD881D38E87D000CD05E /* Checkpoint.swift */,
 				122ECD891D38E87D000CD05E /* Tracking.swift */,
 				122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */,
+				122ECD991D39E385000CD05E /* Response.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -144,12 +151,14 @@
 		12D5620A1D379083006C1399 /* aftershipTests */ = {
 			isa = PBXGroup;
 			children = (
+				122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */,
 				12D5620D1D379083006C1399 /* Info.plist */,
 				122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */,
 				122ECD741D389F05000CD05E /* CheckPointTest.swift */,
 				122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */,
-				122ECD761D38A239000CD05E /* TrackingStatusTest.swift */,
+				122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */,
 				122ECD971D39020A000CD05E /* StringTest.swift */,
+				122ECD761D38A239000CD05E /* TrackingStatusTest.swift */,
 			);
 			path = aftershipTests;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122ECD9C1D39E62A000CD05E /* Demo_GetTracking.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +276,7 @@
 				122ECD8B1D38E87D000CD05E /* Checkpoint.swift in Sources */,
 				122ECD8D1D38E87D000CD05E /* TrackingStatus.swift in Sources */,
 				122ECD801D38E563000CD05E /* String+Extension.swift in Sources */,
+				122ECD9A1D39E385000CD05E /* Response.swift in Sources */,
 				122ECD911D38F8F3000CD05E /* AftershipClient.swift in Sources */,
 				122ECD8C1D38E87D000CD05E /* Tracking.swift in Sources */,
 				122ECD841D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift in Sources */,
@@ -279,6 +290,7 @@
 			files = (
 				122ECD961D38FFD4000CD05E /* NSURLComponentsTest.swift in Sources */,
 				122ECD981D39020A000CD05E /* StringTest.swift in Sources */,
+				122ECDA01D39EE7E000CD05E /* ResponseTest.swift in Sources */,
 				122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */,
 				122ECD751D389F05000CD05E /* CheckPointTest.swift in Sources */,
 				122ECD771D38A239000CD05E /* TrackingStatusTest.swift in Sources */,

@@ -27,13 +27,13 @@ extension AftershipClient {
 		//TODO: handle non JSON response, error handling
 		guard let data = data,
 			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
-			let json = jsonUnwrapped else {
+			let json = jsonUnwrapped,
+			let response = Response(json: json),
+			let tracking = response.tracking else {
 				//TODO: Error message bro!
 				return .Error(NSError(domain: "Meh", code: 0, userInfo: nil));
 		}
-		
-		//TODO: parse the data object
-		return .Success(response: Tracking(json: json));
+		return .Success(response: tracking);
 		//		print("\(json)");
 		
 		/*let allHeaderFields = (response as? NSHTTPURLResponse)?.allHeaderFields;

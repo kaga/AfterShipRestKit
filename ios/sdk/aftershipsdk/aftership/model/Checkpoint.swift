@@ -9,24 +9,24 @@
 import Foundation
 
 public struct Checkpoint {
-	let json: [String: AnyObject];
+	public let json: [String: AnyObject];
 	
-	let slug: String?;
-	let city: String?;
-	let location: String?; //Available in REST API, missing in documentation
+	public let slug: String?;
+	public let city: String?;
+	public let location: String?; //Available in REST API, missing in documentation
 	
-	let createdAt: NSDate?;
-	let checkPointTime: NSDate?;
+	public let createdAt: NSDate?;
+	public let checkPointTime: NSDate?;
 	
-	let message: String?;
-	let tag: TrackingStatus?;
+	public let message: String?;
+	public let tag: TrackingStatus?;
 	
-	let countryIsoCode: String?;
-	let countryName: String?;
-	let state: String?;
-	let zip: String?;
+	public let countryIsoCode: String?;
+	public let countryName: String?;
+	public let state: String?;
+	public let zip: String?;
 	
-	init?(json: [String: AnyObject]) {
+	init(json: [String: AnyObject]) {
 		self.json = json;
 		
 		self.slug = json["slug"] as? String;

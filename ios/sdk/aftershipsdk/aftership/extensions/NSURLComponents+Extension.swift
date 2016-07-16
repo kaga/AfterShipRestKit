@@ -9,14 +9,10 @@
 import Foundation
 
 extension NSURLComponents {
-	convenience init(aftershipHost host: String, path: String, apiVersion: Int?) {
+	convenience init(aftershipHost host: String, path: String, apiVersion: Int) {
 		self.init();
 		self.scheme = "https";
 		self.host = host;
-		if let apiVersion = apiVersion {
-			self.path = "/v\(apiVersion)/\(path)";
-		} else {
-			self.path = path;
-		}
+		self.path = "/v\(apiVersion)/\(path)";
 	}
 }

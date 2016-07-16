@@ -28,19 +28,14 @@ class CheckPointTest: XCTestCase {
 		let tagCode = "InTransit";
 		let json: [String: AnyObject] = [
 			"slug": slug,
-			"city": NSNull(),
 			"created_at": "2016-05-04T10:37:03+00:00",
 			"location": location,
-			"country_name": NSNull(),
 			"message": message,
-			"country_iso3": NSNull(),
 			"tag": tagCode,
 			"checkpoint_time": "2016-05-01T20:22:30",
 			"coordinates": [],
-			"state": NSNull(),
-			"zip": NSNull()
 		];
-		let checkpoint = Checkpoint(json: json)!;
+		let checkpoint = Checkpoint(json: json);
 		
 		let validPropertiesMessage = "Valid properties should be parsed";
 		XCTAssertEqual(checkpoint.slug, slug, validPropertiesMessage);
@@ -65,19 +60,14 @@ class CheckPointTest: XCTestCase {
 		let tagCode = "FooBar";
 		let json: [String: AnyObject] = [
 			"slug": slug,
-			"city": NSNull(),
 			"created_at": "",
 			"location": location,
-			"country_name": NSNull(),
 			"message": message,
-			"country_iso3": NSNull(),
 			"tag": tagCode,
 			"checkpoint_time": "",
 			"coordinates": [],
-			"state": NSNull(),
-			"zip": NSNull()
 		];
-		let checkpoint = Checkpoint(json: json)!;
+		let checkpoint = Checkpoint(json: json);
 		XCTAssertNil(checkpoint.tag, "Should not crash when there is a new tag avaiable from the service");
 		XCTAssertNil(checkpoint.createdAt);
 		XCTAssertNil(checkpoint.checkPointTime);		
