@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import AfterShip
+@testable import AfterShipRestKit
 
 class ResponseTest: XCTestCase {
 	let getTrackingResponse: [String: AnyObject] = [

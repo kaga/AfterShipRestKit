@@ -8,32 +8,57 @@
 
 import Foundation
 
-extension AftershipClient {
-	public func getTracking(trackingNumber: String, slug: String, completionHandler: (result: RequestResult<Tracking>) -> Void) {
-		let urlComponents = NSURLComponents(aftershipHost: apiHost, path: "/trackings/\(slug)/\(trackingNumber)", apiVersion: apiVersion);
-		guard let url = urlComponents.URL where (slug.isEmpty == false && trackingNumber.isEmpty == false) else {
-			//TODO: proper error code
-			completionHandler(result: RequestResult.Error(NSError(domain: "Meh", code: 0, userInfo: nil)));
+
+//public struct GetTrackingRequestParameters {
+//	public let path: String;
+//	public var fields: [String]? = nil;
+//	public var responseLanguage: String? = nil;
+//	
+//	public init?(slug: String, trackingNumber: String) {
+//		self.path = "";
+//	}
+//}
+
+public typealias GetTrackingCompletionHandler = (result: RequestResult<Tracking>) -> Void
+
+public extension AftershipClient {
+//	public func getTracking(parameters parameters: GetTrackingRequestParameters,
+//										completionHandler: (result: RequestResult<Tracking>) -> Void) {
+//		
+//		
+//	}
+	
+	public func getTracking(trackingNumber trackingNumber: String,
+	                                       slug: String,
+	                                       completionHandler: (result: RequestResult<Tracking>) -> Void) {
+		guard (slug.isEmpty == false && trackingNumber.isEmpty == false) else {
+			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
 		
-		let request = NSMutableURLRequest(aftershipUrl: url, httpMethod: "GET", apiKey: apiKey);
-		urlSession.performRequest(request) { (data, response, error) in
-			completionHandler(result: self.onDataTaskRequestCompleted(data, response: response, error: error));
+		self.performRequest("/trackings/\(slug)/\(trackingNumber)") { (result) in
+			switch result {
+			case .Success(let response):
+				guard let tracking = response.tracking else {
+					completionHandler(result: .Error(.InvalidJsonData)); //TODO Test when get trackings result returned
+					break;
+				}
+				completionHandler(result: .Success(response: tracking));
+			case .Error(let errorType):
+				completionHandler(result: .Error(errorType));
+			}
 		}
 	}
 	
-	func onDataTaskRequestCompleted(data: NSData?, response: NSURLResponse?, error: NSError?) -> RequestResult<Tracking> {
-		//TODO: handle non JSON response, error handling
-		guard let data = data,
-			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
-			let json = jsonUnwrapped,
-			let response = Response(json: json),
-			let tracking = response.tracking else {
-				//TODO: Error message bro!
-				return .Error(NSError(domain: "Meh", code: 0, userInfo: nil));
-		}
-		return .Success(response: tracking);
+//	private func onDataTaskRequestCompleted(data: NSData?, response: NSURLResponse?, error: NSError?) -> RequestResult<Tracking> {
+//		guard let data = data,
+//			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
+//			let json = jsonUnwrapped,
+//			let response = Response(json: json),
+//			let tracking = response.tracking else {
+//				return .Error(.InvalidJsonData);
+//		}
+//		return .Success(response: tracking);
 		//		print("\(json)");
 		
 		/*let allHeaderFields = (response as? NSHTTPURLResponse)?.allHeaderFields;
@@ -46,5 +71,6 @@ extension AftershipClient {
 		
 		//NSDate(timeIntervalSince1970: rateLimitReset)
 		//print("ResponseTime: \(responseTime), Limit:\(rateLimitLimit), Remaining:\(rateLimitRemaining), Reset:\(rateLimitReset)");
-	}
+//	}
 }
+

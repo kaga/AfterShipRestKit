@@ -35,12 +35,13 @@ public extension Response {
 	}
 }
 
-public struct Metadata {
-	public var json: [String: AnyObject];
-	public var code: Int?;
-	
-	init(json: [String: AnyObject]) {
-		self.json = json;
-		self.code = json["code"] as? Int;
+extension Response {
+	init?(jsonData: NSData?) {
+		guard let data = jsonData,
+			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
+			let json = jsonUnwrapped else {
+				return nil;
+		}
+		self.init(json: json);
 	}
 }

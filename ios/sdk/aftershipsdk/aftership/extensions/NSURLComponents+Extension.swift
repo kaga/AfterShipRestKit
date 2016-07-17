@@ -13,6 +13,6 @@ extension NSURLComponents {
 		self.init();
 		self.scheme = "https";
 		self.host = host;
-		self.path = "/v\(apiVersion)/\(path)";
+		self.path = "/v\(apiVersion)\(path)";
 	}
 }

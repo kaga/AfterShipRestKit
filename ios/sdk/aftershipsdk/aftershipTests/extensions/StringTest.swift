@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import AfterShip
+@testable import AfterShipRestKit
 
 class StringTest: XCTestCase {
 

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "12D561FB1D379083006C1399"
-               BuildableName = "AfterShip.framework"
-               BlueprintName = "aftership"
+               BuildableName = "AfterShipRestKit.framework"
+               BlueprintName = "aftershipiOS"
                ReferencedContainer = "container:aftership.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12D561FB1D379083006C1399"
-            BuildableName = "AfterShip.framework"
-            BlueprintName = "aftership"
+            BuildableName = "AfterShipRestKit.framework"
+            BlueprintName = "aftershipiOS"
             ReferencedContainer = "container:aftership.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12D561FB1D379083006C1399"
-            BuildableName = "AfterShip.framework"
-            BlueprintName = "aftership"
+            BuildableName = "AfterShipRestKit.framework"
+            BlueprintName = "aftershipiOS"
             ReferencedContainer = "container:aftership.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12D561FB1D379083006C1399"
-            BuildableName = "AfterShip.framework"
-            BlueprintName = "aftership"
+            BuildableName = "AfterShipRestKit.framework"
+            BlueprintName = "aftershipiOS"
             ReferencedContainer = "container:aftership.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -7,11 +7,11 @@
 //
 
 import XCTest
-@testable import AfterShip
+@testable import AfterShipRestKit
 
 class NSURLComponentsTest: XCTestCase {
     func testV4GetTrackingsUrl() {
-		let components = NSURLComponents(aftershipHost: "api.aftership.com", path: "trackings", apiVersion: 4);
+		let components = NSURLComponents(aftershipHost: "api.aftership.com", path: "/trackings", apiVersion: 4);
 		XCTAssertEqual(components.URL?.absoluteString, "https://api.aftership.com/v4/trackings", "Should support existing api format");
 	}
 }

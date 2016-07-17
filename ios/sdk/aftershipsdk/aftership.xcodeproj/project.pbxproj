@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		122ECD751D389F05000CD05E /* CheckPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD741D389F05000CD05E /* CheckPointTest.swift */; };
-		122ECD771D38A239000CD05E /* TrackingStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD761D38A239000CD05E /* TrackingStatusTest.swift */; };
+		1213038F1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213038E1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift */; };
+		121303911D3B96AB00C0EE93 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303901D3B96AB00C0EE93 /* Metadata.swift */; };
+		1213039C1D3B974C00C0EE93 /* NSURLComponentsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303951D3B974C00C0EE93 /* NSURLComponentsTest.swift */; };
+		1213039D1D3B974C00C0EE93 /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303961D3B974C00C0EE93 /* StringTest.swift */; };
+		1213039E1D3B974C00C0EE93 /* CheckPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303981D3B974C00C0EE93 /* CheckPointTest.swift */; };
+		1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303991D3B974C00C0EE93 /* MetadataTest.swift */; };
+		121303A01D3B974C00C0EE93 /* ResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213039A1D3B974C00C0EE93 /* ResponseTest.swift */; };
+		121303A11D3B974C00C0EE93 /* TrackingStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */; };
 		122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -18,13 +24,11 @@
 		122ECD8D1D38E87D000CD05E /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */; };
 		122ECD911D38F8F3000CD05E /* AftershipClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD901D38F8F3000CD05E /* AftershipClient.swift */; };
 		122ECD941D38F954000CD05E /* AftershipClient+GetTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */; };
-		122ECD961D38FFD4000CD05E /* NSURLComponentsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */; };
-		122ECD981D39020A000CD05E /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD971D39020A000CD05E /* StringTest.swift */; };
 		122ECD9A1D39E385000CD05E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD991D39E385000CD05E /* Response.swift */; };
 		122ECD9C1D39E62A000CD05E /* Demo_GetTracking.json in Resources */ = {isa = PBXBuildFile; fileRef = 122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */; };
-		122ECDA01D39EE7E000CD05E /* ResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */; };
+		12BD1DFD1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD1DFC1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift */; };
 		12D562001D379083006C1399 /* aftership.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D561FF1D379083006C1399 /* aftership.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		12D562071D379083006C1399 /* AfterShip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D561FC1D379083006C1399 /* AfterShip.framework */; };
+		12D562071D379083006C1399 /* AfterShipRestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D561FC1D379083006C1399 /* AfterShipRestKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		122ECD741D389F05000CD05E /* CheckPointTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPointTest.swift; sourceTree = "<group>"; };
-		122ECD761D38A239000CD05E /* TrackingStatusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStatusTest.swift; sourceTree = "<group>"; };
+		1213038E1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClient+CreateTrackings.swift"; sourceTree = "<group>"; };
+		121303901D3B96AB00C0EE93 /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		121303951D3B974C00C0EE93 /* NSURLComponentsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLComponentsTest.swift; sourceTree = "<group>"; };
+		121303961D3B974C00C0EE93 /* StringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTest.swift; sourceTree = "<group>"; };
+		121303981D3B974C00C0EE93 /* CheckPointTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPointTest.swift; sourceTree = "<group>"; };
+		121303991D3B974C00C0EE93 /* MetadataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataTest.swift; sourceTree = "<group>"; };
+		1213039A1D3B974C00C0EE93 /* ResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTest.swift; sourceTree = "<group>"; };
+		1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStatusTest.swift; sourceTree = "<group>"; };
 		122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftershipClientTest.swift; sourceTree = "<group>"; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -49,12 +59,10 @@
 		122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		122ECD901D38F8F3000CD05E /* AftershipClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftershipClient.swift; sourceTree = "<group>"; };
 		122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClient+GetTrackings.swift"; sourceTree = "<group>"; };
-		122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLComponentsTest.swift; sourceTree = "<group>"; };
-		122ECD971D39020A000CD05E /* StringTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTest.swift; sourceTree = "<group>"; };
 		122ECD991D39E385000CD05E /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Demo_GetTracking.json; sourceTree = "<group>"; };
-		122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTest.swift; sourceTree = "<group>"; };
-		12D561FC1D379083006C1399 /* AfterShip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12BD1DFC1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClientTest+GetTracking.swift"; sourceTree = "<group>"; };
+		12D561FC1D379083006C1399 /* AfterShipRestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShipRestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D561FF1D379083006C1399 /* aftership.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aftership.h; sourceTree = "<group>"; };
 		12D562011D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12D562061D379083006C1399 /* aftershipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aftershipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,13 +81,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12D562071D379083006C1399 /* AfterShip.framework in Frameworks */,
+				12D562071D379083006C1399 /* AfterShipRestKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		121303941D3B974C00C0EE93 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				121303951D3B974C00C0EE93 /* NSURLComponentsTest.swift */,
+				121303961D3B974C00C0EE93 /* StringTest.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		121303971D3B974C00C0EE93 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				121303981D3B974C00C0EE93 /* CheckPointTest.swift */,
+				121303991D3B974C00C0EE93 /* MetadataTest.swift */,
+				1213039A1D3B974C00C0EE93 /* ResponseTest.swift */,
+				1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		122ECD7E1D38E53B000CD05E /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +125,7 @@
 				122ECD891D38E87D000CD05E /* Tracking.swift */,
 				122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */,
 				122ECD991D39E385000CD05E /* Response.swift */,
+				121303901D3B96AB00C0EE93 /* Metadata.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -114,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */,
+				1213038E1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift */,
 			);
 			path = Trackings;
 			sourceTree = "<group>";
@@ -130,7 +160,7 @@
 		12D561FD1D379083006C1399 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12D561FC1D379083006C1399 /* AfterShip.framework */,
+				12D561FC1D379083006C1399 /* AfterShipRestKit.framework */,
 				12D562061D379083006C1399 /* aftershipTests.xctest */,
 			);
 			name = Products;
@@ -154,11 +184,9 @@
 				122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */,
 				12D5620D1D379083006C1399 /* Info.plist */,
 				122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */,
-				122ECD741D389F05000CD05E /* CheckPointTest.swift */,
-				122ECD951D38FFD4000CD05E /* NSURLComponentsTest.swift */,
-				122ECD9F1D39EE7E000CD05E /* ResponseTest.swift */,
-				122ECD971D39020A000CD05E /* StringTest.swift */,
-				122ECD761D38A239000CD05E /* TrackingStatusTest.swift */,
+				12BD1DFC1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift */,
+				121303941D3B974C00C0EE93 /* extensions */,
+				121303971D3B974C00C0EE93 /* model */,
 			);
 			path = aftershipTests;
 			sourceTree = "<group>";
@@ -177,9 +205,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		12D561FB1D379083006C1399 /* aftership */ = {
+		12D561FB1D379083006C1399 /* aftershipiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftership" */;
+			buildConfigurationList = 12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipiOS" */;
 			buildPhases = (
 				12D561F71D379083006C1399 /* Sources */,
 				12D561F81D379083006C1399 /* Frameworks */,
@@ -190,9 +218,9 @@
 			);
 			dependencies = (
 			);
-			name = aftership;
+			name = aftershipiOS;
 			productName = aftership;
-			productReference = 12D561FC1D379083006C1399 /* AfterShip.framework */;
+			productReference = 12D561FC1D379083006C1399 /* AfterShipRestKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		12D562051D379083006C1399 /* aftershipTests */ = {
@@ -243,7 +271,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				12D561FB1D379083006C1399 /* aftership */,
+				12D561FB1D379083006C1399 /* aftershipiOS */,
 				12D562051D379083006C1399 /* aftershipTests */,
 			);
 		};
@@ -272,12 +300,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1213038F1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift in Sources */,
 				122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */,
 				122ECD8B1D38E87D000CD05E /* Checkpoint.swift in Sources */,
 				122ECD8D1D38E87D000CD05E /* TrackingStatus.swift in Sources */,
 				122ECD801D38E563000CD05E /* String+Extension.swift in Sources */,
 				122ECD9A1D39E385000CD05E /* Response.swift in Sources */,
 				122ECD911D38F8F3000CD05E /* AftershipClient.swift in Sources */,
+				121303911D3B96AB00C0EE93 /* Metadata.swift in Sources */,
 				122ECD8C1D38E87D000CD05E /* Tracking.swift in Sources */,
 				122ECD841D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift in Sources */,
 				122ECD941D38F954000CD05E /* AftershipClient+GetTrackings.swift in Sources */,
@@ -288,12 +318,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				122ECD961D38FFD4000CD05E /* NSURLComponentsTest.swift in Sources */,
-				122ECD981D39020A000CD05E /* StringTest.swift in Sources */,
-				122ECDA01D39EE7E000CD05E /* ResponseTest.swift in Sources */,
+				1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */,
 				122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */,
-				122ECD751D389F05000CD05E /* CheckPointTest.swift in Sources */,
-				122ECD771D38A239000CD05E /* TrackingStatusTest.swift in Sources */,
+				1213039D1D3B974C00C0EE93 /* StringTest.swift in Sources */,
+				1213039C1D3B974C00C0EE93 /* NSURLComponentsTest.swift in Sources */,
+				12BD1DFD1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift in Sources */,
+				121303A01D3B974C00C0EE93 /* ResponseTest.swift in Sources */,
+				1213039E1D3B974C00C0EE93 /* CheckPointTest.swift in Sources */,
+				121303A11D3B974C00C0EE93 /* TrackingStatusTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +334,7 @@
 /* Begin PBXTargetDependency section */
 		12D562091D379083006C1399 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 12D561FB1D379083006C1399 /* aftership */;
+			target = 12D561FB1D379083006C1399 /* aftershipiOS */;
 			targetProxy = 12D562081D379083006C1399 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -412,8 +444,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaga.sdk.aftership;
-				PRODUCT_NAME = AfterShip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aftership.sdk.restkit;
+				PRODUCT_NAME = AfterShipRestKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -432,8 +464,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaga.sdk.aftership;
-				PRODUCT_NAME = AfterShip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aftership.sdk.restkit;
+				PRODUCT_NAME = AfterShipRestKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -470,7 +502,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftership" */ = {
+		12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12D562111D379084006C1399 /* Debug */,
