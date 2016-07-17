@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA.svg?branch=master)](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA)
+
 ## Challenge
 
 Design the proper interface of API in SDK as opensoure project, which is friendly to use and easy to maintain.
