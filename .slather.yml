@@ -1,5 +1,4 @@
 # .slather.yml
-ci_service: travis_ci
 coverage_service: cobertura_xml
 xcodeproj: ./ios/sdk/aftershipsdk/aftership.xcodeproj  
 scheme: aftership  
