@@ -53,7 +53,7 @@ class AftershipClientTest: XCTestCase {
 	func testResetSleepTimeOnSuccessfull() {
 		let expectation = expectationWithDescription("Request to a service");
 	
-		client._numberOfRetriesSinceServiceUnavailable = 2;
+		client._numberOfRetriesSinceServiceUnavailable = (2, NSDate());
 		client.performRequest("/foo") { (result) in
 			XCTAssertEqual(self.client.numberOfRetriesSinceServiceUnavailable, 0, "should reset the counter on received success response");
 			expectation.fulfill();

@@ -25,14 +25,18 @@ public class AftershipClient {
 	}
 	
 	public var numberOfRetriesSinceServiceUnavailable: Int {
-		return self._numberOfRetriesSinceServiceUnavailable;
+		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable where
+			(retryRecord.lastRetry.timeIntervalSinceNow > self.sleepTimeGenerator.maximumDelayTimeInSeconds) else {
+			return 0;
+		}
+		return retryRecord.retryAttepts;
 	}
 	
 	private lazy var sleepTimeGenerator: ExponentialBackoff = {
 		return ExponentialBackoff(baseDelayTimeInSeconds: 1, maximumDelayTimeInSeconds: 60);
 	}();
 	
-	var _numberOfRetriesSinceServiceUnavailable: Int = 0;
+	var _numberOfRetriesSinceServiceUnavailable: (retryAttepts: Int, lastRetry: NSDate)? = nil;
 	
 	var _rateLimit: RateLimit? = nil;
 	
@@ -62,10 +66,14 @@ public class AftershipClient {
 			self.urlSession.perform(request: request) { (result) in
 				switch result {
 				case .Error(let errorType) where (errorType == .TooManyRequests) || (errorType == .ServiceInternalError):
-					self._numberOfRetriesSinceServiceUnavailable = self.numberOfRetriesSinceServiceUnavailable + 1;
+					if let retryRecord = self._numberOfRetriesSinceServiceUnavailable {
+						self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: retryRecord.retryAttepts + 1, lastRetry: NSDate());
+					} else {
+						self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: 0, lastRetry: NSDate());
+					}
 					break;
 				default:
-					self._numberOfRetriesSinceServiceUnavailable = 0;
+					self._numberOfRetriesSinceServiceUnavailable = nil;
 					break;
 				}
 				completionHandler(result: result);

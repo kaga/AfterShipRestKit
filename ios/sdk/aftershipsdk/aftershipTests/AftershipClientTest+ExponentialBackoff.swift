@@ -52,7 +52,7 @@ class AftershipClientTest_ExponentialBackoff: XCTestCase {
 			}
 		}
 		
-		client._numberOfRetriesSinceServiceUnavailable = 10;
+		client._numberOfRetriesSinceServiceUnavailable = (10, NSDate(timeIntervalSinceNow: -61));
 		client.performRequest("/foo", completionHandler: completionHandler);
 		
 		waitForExpectationsWithTimeout(3, handler: nil);
@@ -83,7 +83,7 @@ class AftershipClientTest_ExponentialBackoff: XCTestCase {
 			}
 		}
 		
-		client._numberOfRetriesSinceServiceUnavailable = numberOfRetries;
+		client._numberOfRetriesSinceServiceUnavailable = (numberOfRetries, NSDate());
 		client.performRequest("/foo", completionHandler: completionHandler);
 		
 		waitForExpectationsWithTimeout(10, handler: nil);
