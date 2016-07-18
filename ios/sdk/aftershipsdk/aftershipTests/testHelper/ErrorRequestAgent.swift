@@ -11,7 +11,7 @@ import Foundation
 
 class ErrorRequestAgent: RequestAgent {
 	var errorType: RequestErrorType = .ServiceInternalError;
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
+	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void {
 		completionHandler(result: .Error(errorType));
 	}
 }

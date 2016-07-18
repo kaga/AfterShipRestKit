@@ -40,7 +40,7 @@ class AftershipClientTest_CreateTracking: XCTestCase {
 	
 	func testNoRequestQuotaOnCreateTracking() {
 		let expectation = expectationWithDescription("Create Tracking Request");
-		client._rateLimit = (resetDate: NSDate().dateByAddingTimeInterval(10), remaining: 0, limit: 600);
+		client._rateLimit = RateLimit(resetDate: NSDate().dateByAddingTimeInterval(10), remaining: 0, limit: 600);
 		client.createTracking(trackingNumber: "123456789") { (result) in
 			let errorType = AftershipAssertErrorReponse(result);
 			XCTAssertEqual(errorType, RequestErrorType.TooManyRequests,

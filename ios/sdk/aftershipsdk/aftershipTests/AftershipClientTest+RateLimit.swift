@@ -27,7 +27,7 @@ class AftershipClientTest_RateLimit: XCTestCase {
 	func testNoRequestQuota() {
 		let expectation = expectationWithDescription("Request to service after received a 429 error");
 		
-		client._rateLimit = (resetDate: NSDate().dateByAddingTimeInterval(10), remaining: 0, limit: 600);
+		client._rateLimit = RateLimit(resetDate: NSDate().dateByAddingTimeInterval(10), remaining: 0, limit: 600);
 		XCTAssertNotNil(client.rateLimit);
 		
 		client.performMockRequest{ (result) in
@@ -41,7 +41,7 @@ class AftershipClientTest_RateLimit: XCTestCase {
 	func testQuotaResetDate() {
 		let expectation = expectationWithDescription("Request to service after received a 429 error");
 		
-		client._rateLimit = (resetDate: NSDate().dateByAddingTimeInterval(-1), remaining: 0, limit: 600);
+		client._rateLimit = RateLimit(resetDate: NSDate().dateByAddingTimeInterval(-1), remaining: 0, limit: 600);
 		
 		client.performMockRequest{ (result) in
 			let response = AftershipAssertSuccessResponse(result);

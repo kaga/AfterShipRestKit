@@ -12,8 +12,9 @@ public struct Response {
 	public var json: [String: AnyObject];
 	public var metadata: Metadata;
 	public var data: [String: AnyObject];
+	public var rateLimit: RateLimit?;
 	
-	init?(json: [String: AnyObject]) {
+	init?(json: [String: AnyObject], rateLimit: RateLimit? = nil) {
 		self.json = json;
 		
 		guard let metadataJson = json["meta"] as? [String: AnyObject],
@@ -22,6 +23,7 @@ public struct Response {
 		}
 		self.metadata = Metadata(json: metadataJson);
 		self.data = dataJson;
+		self.rateLimit = rateLimit;
 	}
 }
 
@@ -36,12 +38,12 @@ public extension Response {
 }
 
 extension Response {
-	init?(jsonData: NSData?) {
+	init?(jsonData: NSData?, rateLimit: RateLimit? = nil) {
 		guard let data = jsonData,
 			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
 			let json = jsonUnwrapped else {
 				return nil;
 		}
-		self.init(json: json);
+		self.init(json: json, rateLimit: rateLimit);
 	}
 }

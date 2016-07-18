@@ -51,28 +51,5 @@ public extension AftershipClient {
 			}
 		}
 	}
-	
-//	private func onDataTaskRequestCompleted(data: NSData?, response: NSURLResponse?, error: NSError?) -> RequestResult<Tracking> {
-//		guard let data = data,
-//			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
-//			let json = jsonUnwrapped,
-//			let response = Response(json: json),
-//			let tracking = response.tracking else {
-//				return .Error(.InvalidJsonData);
-//		}
-//		return .Success(response: tracking);
-		//		print("\(json)");
-		
-		/*let allHeaderFields = (response as? NSHTTPURLResponse)?.allHeaderFields;
-		print(allHeaderFields);
-		let rateLimitReset = allHeaderFields?["X-Ratelimit-Reset"]// as? Int;
-		let rateLimitLimit = allHeaderFields?["X-Ratelimit-Limit"]// as? Int;
-		let rateLimitRemaining = allHeaderFields?["X-Ratelimit-Remaining"]// as? Int;
-		let responseTime = allHeaderFields?["X-Response-Time"] as? String;
-		*/
-		
-		//NSDate(timeIntervalSince1970: rateLimitReset)
-		//print("ResponseTime: \(responseTime), Limit:\(rateLimitLimit), Remaining:\(rateLimitRemaining), Reset:\(rateLimitReset)");
-//	}
 }
 

@@ -14,30 +14,12 @@ public class AftershipClient {
 	public let apiVersion: Int = 4;
 	public let apiKey: String;
 	
-	private let urlSession: RequestAgent;
-	
-	public var rateLimit: RateLimit? {
-		guard let rateLimit = _rateLimit where (rateLimit.resetDate.timeIntervalSinceNow > 0) else {
-			self._rateLimit = nil;
-			return nil;
-		}
-		return rateLimit;
-	}
-	
-	public var numberOfRetriesSinceServiceUnavailable: Int {
-		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable //else {
-			where (NSDate().timeIntervalSinceDate(retryRecord.lastRetry) < self.sleepTimeGenerator.maximumDelayTimeInSeconds) else {
-			return 0;
-		}
-		return retryRecord.retryAttepts;
-	}
-	
+	private let urlSession: RequestAgent;	
 	private lazy var sleepTimeGenerator: ExponentialBackoff = {
 		return ExponentialBackoff(baseDelayTimeInSeconds: 1, maximumDelayTimeInSeconds: 60);
 	}();
 	
 	var _numberOfRetriesSinceServiceUnavailable: (retryAttepts: Int, lastRetry: NSDate)? = nil;
-	
 	var _rateLimit: RateLimit? = nil;
 	
 	public init?(apiKey: String, urlSession: RequestAgent = NSURLSession.sharedSession()) {
@@ -48,7 +30,7 @@ public class AftershipClient {
 		self.urlSession = urlSession;
 	}
 	
-	public func performRequest(request request: NSMutableURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) {
+	public func performRequest(request request: NSMutableURLRequest, completionHandler: RequestAgentCompletionHandler) {
 		if let rateLimit = self.rateLimit where (rateLimit.remaining == 0) {
 			completionHandler(result: RequestResult.Error(.TooManyRequests));
 			return;
@@ -58,18 +40,8 @@ public class AftershipClient {
 		delay(sleepTimeInSeconds) {
 			request.setAftershipHeaderFields(self.apiKey);
 			self.urlSession.perform(request: request) { (result) in
-				switch result {
-				case .Error(let errorType) where (errorType == .TooManyRequests) || (errorType == .ServiceInternalError):
-					if let retryRecord = self._numberOfRetriesSinceServiceUnavailable {
-						self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: retryRecord.retryAttepts + 1, lastRetry: NSDate());
-					} else {
-						self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: 0, lastRetry: NSDate());
-					}
-					break;
-				default:
-					self._numberOfRetriesSinceServiceUnavailable = nil;
-					break;
-				}
+				self.updateRateLimitInfo(result);
+				self.updateNumberOfRetriesCount(result);
 				completionHandler(result: result);
 			}
 		}
@@ -82,48 +54,47 @@ public class AftershipClient {
 	func createUrlRequest(aftershipUrl url: NSURL, httpMethod: String) -> NSMutableURLRequest {
 		return NSMutableURLRequest(aftershipUrl: url, httpMethod: httpMethod, apiKey: self.apiKey);
 	}
-}
-
-public typealias RateLimit = (resetDate: NSDate, remaining: Int, limit: Int);
-
-public enum RequestResult<T> {
-	case Success(response: T);
-	case Error(RequestErrorType);
-}
-
-public enum RequestErrorType: String {
-	case MalformedRequest = "BadRequest";
-	case Unauthorized = "Unauthorized";
-	case Forbidden = "Forbidden";
-	case NotFound = "NotFound";
-	case TooManyRequests = "TooManyRequests";
-	case ServiceInternalError = "InternalError";
-	case InvalidJsonData;
-	//TODO more refine error type
-}
-
-public protocol RequestAgent {
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void;
-}
-
-extension NSURLSession: RequestAgent {
-	public func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
-		let task = self.dataTaskWithRequest(request) { (data, response, error) in
-			guard let response = Response(jsonData: data) else {
-				completionHandler(result: .Error(.InvalidJsonData));
-				return;
+	
+	private func updateRateLimitInfo(result: RequestResult<Response>) {
+		switch result {
+		case .Success(let response):
+			if let rateLimit = response.rateLimit {
+				_rateLimit = rateLimit;
 			}
-			completionHandler(result: .Success(response: response));
+		default:
+			break;
 		}
-		task.resume();
+	}
+	
+	private func updateNumberOfRetriesCount(result: RequestResult<Response>) {
+		switch result {
+		case .Error(let errorType) where (errorType == .TooManyRequests) || (errorType == .ServiceInternalError):
+			if let retryRecord = self._numberOfRetriesSinceServiceUnavailable {
+				self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: retryRecord.retryAttepts + 1, lastRetry: NSDate());
+			} else {
+				self._numberOfRetriesSinceServiceUnavailable = (retryAttepts: 0, lastRetry: NSDate());
+			}
+			break;
+		default:
+			self._numberOfRetriesSinceServiceUnavailable = nil;
+			break;
+		}
 	}
 }
 
-func delay(delayInSeconds:Double, closure:()->()) {
-	dispatch_after(
-		dispatch_time(
-			DISPATCH_TIME_NOW,
-			Int64(delayInSeconds * Double(NSEC_PER_SEC))
-		),
-		dispatch_get_main_queue(), closure)
+public extension AftershipClient {
+	public var rateLimit: RateLimit? {
+		guard let rateLimit = _rateLimit where (rateLimit.resetDate.timeIntervalSinceNow > 0) else {
+			return nil;
+		}
+		return rateLimit;
+	}
+	
+	public var numberOfRetriesSinceServiceUnavailable: Int {
+		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable
+			where (NSDate().timeIntervalSinceDate(retryRecord.lastRetry) < self.sleepTimeGenerator.maximumDelayTimeInSeconds) else {
+				return 0;
+		}
+		return retryRecord.retryAttepts;
+	}
 }
