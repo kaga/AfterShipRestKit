@@ -8,12 +8,23 @@
 
 import Foundation
 
+//TODO rename class
 public class AftershipClient {
 	public var apiHost: String = "api.aftership.com";
 	
 	public let apiVersion: Int = 4;
 	public let urlSession: RequestAgent;
 	public let apiKey: String;
+	
+	public var numberOfRetriesSinceServiceUnavailable: Int {
+		return self._numberOfRetriesSinceServiceUnavailable;
+	}
+	
+	private lazy var sleepTimeGenerator: ExponentialBackoff = {
+		return ExponentialBackoff(baseDelayTimeInSeconds: 1, maximumDelayTimeInSeconds: 60);
+	}()
+	
+	var _numberOfRetriesSinceServiceUnavailable: Int = 0;
 	
 	public init?(apiKey: String, urlSession: RequestAgent = NSURLSession.sharedSession()) {
 		guard apiKey.isEmpty == false else {
@@ -30,8 +41,21 @@ public class AftershipClient {
 			return;
 		}
 		
-		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
-		self.urlSession.perform(request: request, completionHandler: completionHandler);
+		let sleepTimeInSeconds = sleepTimeGenerator.generateSleepTime(self.numberOfRetriesSinceServiceUnavailable);
+		delay(sleepTimeInSeconds) { 
+			let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
+			self.urlSession.perform(request: request) { (result) in
+				switch result {
+				case .Error(let errorType) where (errorType == .TooManyRequests) || (errorType == .ServiceInternalError):
+					self._numberOfRetriesSinceServiceUnavailable = self.numberOfRetriesSinceServiceUnavailable + 1;
+					break;
+				default:
+					self._numberOfRetriesSinceServiceUnavailable = 0;
+					break;
+				}
+				completionHandler(result: result);
+			}
+		}
 	}
 	
 	func createUrlComponents(path: String) -> NSURLComponents {
@@ -48,8 +72,13 @@ public enum RequestResult<T> {
 	case Error(RequestErrorType);
 }
 
-public enum RequestErrorType {
-	case MalformedRequest;
+public enum RequestErrorType: String {
+	case MalformedRequest = "BadRequest";
+	case Unauthorized = "Unauthorized";
+	case Forbidden = "Forbidden";
+	case NotFound = "NotFound";
+	case TooManyRequests = "TooManyRequests";
+	case ServiceInternalError = "InternalError";
 	case InvalidJsonData;
 	//TODO more refine error type
 }
@@ -69,4 +98,13 @@ extension NSURLSession: RequestAgent {
 		}
 		task.resume();
 	}
+}
+
+func delay(delayInSeconds:Double, closure:()->()) {
+	dispatch_after(
+		dispatch_time(
+			DISPATCH_TIME_NOW,
+			Int64(delayInSeconds * Double(NSEC_PER_SEC))
+		),
+		dispatch_get_main_queue(), closure)
 }

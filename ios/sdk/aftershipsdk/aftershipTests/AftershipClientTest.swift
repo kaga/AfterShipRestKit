@@ -30,7 +30,9 @@ class AftershipClientTest: XCTestCase {
 	}
 	
 	func testRequestHeaderValues() {
-		self.client.performRequest("/foo") { (result) in
+		let expectation = expectationWithDescription("Request to a service");
+		
+		client.performRequest("/foo") { (result) in
 			guard let request = self.agent.lastUrlRequest else {
 				XCTFail();
 				return;
@@ -40,10 +42,64 @@ class AftershipClientTest: XCTestCase {
 			XCTAssertEqual(request.valueForHTTPHeaderField("aftership-api-key"), "AfterShipApiKey");
 			
 			let version = NSBundle.AftershipRestKitBundle().versionBuild;
-			XCTAssertEqual(request.valueForHTTPHeaderField("aftership-user-agent"), "aftership-restkit \(version)", "Part of the requirement - Header include 'aftership-user-agent'");
+			XCTAssertEqual(request.valueForHTTPHeaderField("aftership-user-agent"), "aftership-restkit \(version)",
+			               "Part of the requirement - Header include 'aftership-user-agent'");
+			expectation.fulfill();
 		}
+		
+		waitForExpectationsWithTimeout(3, handler: nil);
 	}
 	
+	func testExponentialBackoffRetryOnServiceUnavailable() {
+		let requestDuration = timePerformRequestDuration(.ServiceInternalError, numberOfRetries: 2);
+		XCTAssertGreaterThan(requestDuration, 0,
+		                     "Should limit the client somewhat because we don't want to ping the service to death if it is already down");
+	}
+	
+	func testWhenServiceRunOutOfRequestLimit() {
+		let requestDuration = timePerformRequestDuration(.TooManyRequests, numberOfRetries: 2);
+		XCTAssertGreaterThan(requestDuration, 0, "Both 500 errors and 429 should trigger the backoff procedure");
+	}
+	
+	func testResetSleepTimeOnSuccessfull() {
+		let expectation = expectationWithDescription("Request to a service");
+	
+		client._numberOfRetriesSinceServiceUnavailable = 2;
+		client.performRequest("/foo") { (result) in
+			XCTAssertEqual(self.client.numberOfRetriesSinceServiceUnavailable, 0, "should reset the counter on received success response");
+			expectation.fulfill();
+		}
+		waitForExpectationsWithTimeout(10, handler: nil);
+	}
+	
+	func timePerformRequestDuration(errorType: RequestErrorType, numberOfRetries: Int) -> NSTimeInterval {
+		let expectation = expectationWithDescription("Request to a service");
+		
+		let agent = ErrorRequestAgent();
+		agent.errorType = errorType;
+		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		
+		let testStartTime = NSDate();
+		var requestDuration: NSTimeInterval = 0;
+		
+		let completionHandler: (result: RequestResult<Response>) -> Void = { (result) in
+			switch result {
+			case .Error(let responseErrorType):
+				XCTAssertEqual(responseErrorType, errorType);
+				requestDuration = NSDate().timeIntervalSinceDate(testStartTime);
+				expectation.fulfill();
+				break;
+			default:
+				XCTFail();
+			}
+		}
+		
+		client._numberOfRetriesSinceServiceUnavailable = numberOfRetries;
+		client.performRequest("/foo", completionHandler: completionHandler);
+		
+		waitForExpectationsWithTimeout(10, handler: nil);
+		return requestDuration;
+	}
 }
 
 class MockRequestAgent: RequestAgent {
@@ -62,5 +118,12 @@ class MockRequestAgent: RequestAgent {
 			return;
 		}
 		completionHandler(result: .Success(response: response));
+	}
+}
+
+class ErrorRequestAgent: RequestAgent {
+	var errorType: RequestErrorType = .ServiceInternalError;
+	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
+		completionHandler(result: .Error(errorType));
 	}
 }

@@ -15,6 +15,8 @@
 		1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303991D3B974C00C0EE93 /* MetadataTest.swift */; };
 		121303A01D3B974C00C0EE93 /* ResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213039A1D3B974C00C0EE93 /* ResponseTest.swift */; };
 		121303A11D3B974C00C0EE93 /* TrackingStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */; };
+		121303A41D3C695600C0EE93 /* ExponentialBackoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */; };
+		121303A61D3C6A1700C0EE93 /* ExponentialBackoffTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */; };
 		122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -50,6 +52,8 @@
 		121303991D3B974C00C0EE93 /* MetadataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataTest.swift; sourceTree = "<group>"; };
 		1213039A1D3B974C00C0EE93 /* ResponseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTest.swift; sourceTree = "<group>"; };
 		1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStatusTest.swift; sourceTree = "<group>"; };
+		121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExponentialBackoff.swift; sourceTree = "<group>"; };
+		121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExponentialBackoffTest.swift; sourceTree = "<group>"; };
 		122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftershipClientTest.swift; sourceTree = "<group>"; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -106,6 +110,14 @@
 				1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		121303A21D3C690900C0EE93 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */,
+			);
+			path = utility;
 			sourceTree = "<group>";
 		};
 		122ECD7E1D38E53B000CD05E /* extensions */ = {
@@ -171,6 +183,7 @@
 			children = (
 				12D561FF1D379083006C1399 /* aftership.h */,
 				12D562011D379083006C1399 /* Info.plist */,
+				121303A21D3C690900C0EE93 /* utility */,
 				122ECD8F1D38F8F3000CD05E /* client */,
 				122ECD7E1D38E53B000CD05E /* extensions */,
 				122ECD871D38E87D000CD05E /* model */,
@@ -185,6 +198,7 @@
 				12D5620D1D379083006C1399 /* Info.plist */,
 				122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */,
 				12BD1DFC1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift */,
+				121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */,
 				121303941D3B974C00C0EE93 /* extensions */,
 				121303971D3B974C00C0EE93 /* model */,
 			);
@@ -302,6 +316,7 @@
 			files = (
 				1213038F1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift in Sources */,
 				122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */,
+				121303A41D3C695600C0EE93 /* ExponentialBackoff.swift in Sources */,
 				122ECD8B1D38E87D000CD05E /* Checkpoint.swift in Sources */,
 				122ECD8D1D38E87D000CD05E /* TrackingStatus.swift in Sources */,
 				122ECD801D38E563000CD05E /* String+Extension.swift in Sources */,
@@ -319,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */,
+				121303A61D3C6A1700C0EE93 /* ExponentialBackoffTest.swift in Sources */,
 				122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */,
 				1213039D1D3B974C00C0EE93 /* StringTest.swift in Sources */,
 				1213039C1D3B974C00C0EE93 /* NSURLComponentsTest.swift in Sources */,
