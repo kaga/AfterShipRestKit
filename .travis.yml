@@ -1,8 +1,7 @@
-language: swift
+language: objective-c
 osx_image: xcode7.3 
-xcode_project: ios/sdk/aftershipsdk/aftership.xcodeproj 
+xcode_workspace: ios/sdk/aftership.xcworkspace
 xcode_scheme: aftership 
-xcode_sdk: iphonesimulator9.3 
 notifications:
  email:
   on_success: never
