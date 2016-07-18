@@ -32,7 +32,7 @@ class AftershipClientTest: XCTestCase {
 	func testRequestHeaderValues() {
 		let expectation = expectationWithDescription("Request to a service");
 		
-		client.performRequest("/foo") { (result) in
+		client.performMockRequest{ (result) in
 			guard let request = self.agent.lastUrlRequest else {
 				XCTFail();
 				return;
@@ -54,7 +54,7 @@ class AftershipClientTest: XCTestCase {
 		let expectation = expectationWithDescription("Request to a service");
 	
 		client._numberOfRetriesSinceServiceUnavailable = (2, NSDate());
-		client.performRequest("/foo") { (result) in
+		client.performMockRequest{ (result) in
 			XCTAssertEqual(self.client.numberOfRetriesSinceServiceUnavailable, 0, "should reset the counter on received success response");
 			expectation.fulfill();
 		}
@@ -62,28 +62,16 @@ class AftershipClientTest: XCTestCase {
 	}
 }
 
-class MockRequestAgent: RequestAgent {
-	var data: NSData?;
-	var lastUrlRequest: NSURLRequest?;
-	
-	init() {
-		let url = NSBundle(forClass: self.dynamicType).URLForResource("Demo_GetTracking", withExtension: "json", subdirectory: nil);
-		self.data = NSData(contentsOfURL: url!)!;
-	}
-	
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
-		self.lastUrlRequest = request;
-		guard let response = Response(jsonData: data) else {
-			completionHandler(result: .Error(.InvalidJsonData));
+extension AftershipClient {
+	public func performMockRequest(completionHandler: (result: RequestResult<Response>) -> Void) {
+		let urlComponents = self.createUrlComponents("/foo");
+		guard let url = urlComponents.URL else {
+			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
-		completionHandler(result: .Success(response: response));
+		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
+		self.performRequest(request: request, completionHandler: completionHandler);
 	}
 }
 
-class ErrorRequestAgent: RequestAgent {
-	var errorType: RequestErrorType = .ServiceInternalError;
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
-		completionHandler(result: .Error(errorType));
-	}
-}
+

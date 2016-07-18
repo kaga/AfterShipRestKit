@@ -1,0 +1,43 @@
+{
+    "meta": {
+        "code": 201
+    },
+    "data": {
+        "tracking": {
+            "id": "53aa7b5c415a670000000021",
+            "created_at": "2014-06-25T07:33:48+00:00",
+            "updated_at": "2014-06-25T07:33:48+00:00",
+            "tracking_number": "123456789",
+            "tracking_account_number": null,
+            "tracking_postal_code": null,
+            "tracking_ship_date": null,
+            "slug": "dhl",
+            "active": true,
+            "custom_fields": {
+                "product_price": "USD19.99",
+                "product_name": "iPhone Case"
+            },
+            "customer_name": null,
+            "destination_country_iso3": null,
+            "emails": [
+                "email@yourdomain.com",
+                "another_email@yourdomain.com"
+            ],
+            "expected_delivery": null,
+            "note": null,
+            "order_id": "ID 1234",
+            "order_id_path": "http://www.aftership.com/order_id=1234",
+            "origin_country_iso3": null,
+            "shipment_package_count": 0,
+            "shipment_type": null,
+            "signed_by": null,
+            "smses": [],
+            "source": "api",
+            "tag": "Pending",
+            "title": "Title Name",
+            "tracked_count": 0,
+            "unique_token": "xy_fej9Llg",
+            "checkpoints": []
+        }
+    }
+}

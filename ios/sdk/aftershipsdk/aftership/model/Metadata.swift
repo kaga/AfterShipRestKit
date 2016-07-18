@@ -8,20 +8,11 @@
 
 import Foundation
 
-public enum MetadataType: String {
-	case BadRequest;
-	case Unauthorized;
-	case Forbidden;
-	case NotFound;
-	case TooManyRequests;
-	case InternalError;
-}
-
 public struct Metadata {
 	public var json: [String: AnyObject];
 	public let code: Int?;
 	public let message: String?;
-	public let type: MetadataType?;
+	public let type: RequestErrorType?;
 	
 	init(json: [String: AnyObject]) {
 		self.json = json;
@@ -29,7 +20,7 @@ public struct Metadata {
 		self.message = json["message"] as? String;
 		
 		if let typeRawValue = json["type"] as? String,
-			let type = MetadataType(rawValue: typeRawValue){
+			let type = RequestErrorType(rawValue: typeRawValue){
 			self.type = type;
 		} else {
 			self.type = nil;

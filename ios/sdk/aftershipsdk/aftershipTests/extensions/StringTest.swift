@@ -24,22 +24,4 @@ class StringTest: XCTestCase {
 		XCTAssertNil("".dateValue, "Empty string is not a date");
 		XCTAssertNil("Foo".dateValue, "Foo is not a date");
 	}
-
-}
-
-extension XCTestCase {
-	func compareDate(date: NSDate, expectedDateComponents components: (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int)) -> NSComparisonResult {
-		let expectedDateComponents = NSDateComponents();
-		expectedDateComponents.timeZone = NSTimeZone(forSecondsFromGMT: 0);
-		expectedDateComponents.year = components.year;
-		expectedDateComponents.month = components.month;
-		expectedDateComponents.day = components.day;
-		expectedDateComponents.hour = components.hour;
-		expectedDateComponents.minute = components.minute;
-		expectedDateComponents.second = components.second;
-		
-		let calendar = NSCalendar.currentCalendar();
-		let expectedDate = calendar.dateFromComponents(expectedDateComponents)!;
-		return calendar.compareDate(date, toDate: expectedDate, toUnitGranularity: .Second);
-	}
 }

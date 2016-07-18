@@ -15,11 +15,9 @@ class ExponentialBackoffTest: XCTestCase {
     override func setUp() {
 		super.setUp();
 		generator = ExponentialBackoff(baseDelayTimeInSeconds: 1, maximumDelayTimeInSeconds: 60);
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 

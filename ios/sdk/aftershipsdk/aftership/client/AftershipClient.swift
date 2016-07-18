@@ -11,10 +11,10 @@ import Foundation
 //TODO rename class
 public class AftershipClient {
 	public var apiHost: String = "api.aftership.com";
-	
 	public let apiVersion: Int = 4;
-	public let urlSession: RequestAgent;
 	public let apiKey: String;
+	
+	private let urlSession: RequestAgent;
 	
 	public var rateLimit: RateLimit? {
 		guard let rateLimit = _rateLimit where (rateLimit.resetDate.timeIntervalSinceNow > 0) else {
@@ -25,8 +25,8 @@ public class AftershipClient {
 	}
 	
 	public var numberOfRetriesSinceServiceUnavailable: Int {
-		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable where
-			(retryRecord.lastRetry.timeIntervalSinceNow > self.sleepTimeGenerator.maximumDelayTimeInSeconds) else {
+		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable //else {
+			where (NSDate().timeIntervalSinceDate(retryRecord.lastRetry) < self.sleepTimeGenerator.maximumDelayTimeInSeconds) else {
 			return 0;
 		}
 		return retryRecord.retryAttepts;
@@ -48,21 +48,15 @@ public class AftershipClient {
 		self.urlSession = urlSession;
 	}
 	
-	public func performRequest(path: String, completionHandler: (result: RequestResult<Response>) -> Void) {
-		let urlComponents = self.createUrlComponents(path);
-		guard let url = urlComponents.URL else {
-			completionHandler(result: RequestResult.Error(.MalformedRequest));
-			return;
-		}
-		
+	public func performRequest(request request: NSMutableURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) {
 		if let rateLimit = self.rateLimit where (rateLimit.remaining == 0) {
 			completionHandler(result: RequestResult.Error(.TooManyRequests));
 			return;
 		}
 		
 		let sleepTimeInSeconds = sleepTimeGenerator.generateSleepTime(self.numberOfRetriesSinceServiceUnavailable);
-		delay(sleepTimeInSeconds) { 
-			let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
+		delay(sleepTimeInSeconds) {
+			request.setAftershipHeaderFields(self.apiKey);
 			self.urlSession.perform(request: request) { (result) in
 				switch result {
 				case .Error(let errorType) where (errorType == .TooManyRequests) || (errorType == .ServiceInternalError):

@@ -17,6 +17,12 @@ extension NSMutableURLRequest {
 		self.setValue(apiKey, forHTTPHeaderField: "aftership-api-key");
 		self.setValue("aftership-restkit \(NSBundle.AftershipRestKitBundle().versionBuild)", forHTTPHeaderField: "aftership-user-agent");
 	}
+	
+	func setAftershipHeaderFields(apiKey: String) {
+		self.setValue("application/json", forHTTPHeaderField: "Content-Type");
+		self.setValue(apiKey, forHTTPHeaderField: "aftership-api-key");
+		self.setValue("aftership-restkit \(NSBundle.AftershipRestKitBundle().versionBuild)", forHTTPHeaderField: "aftership-user-agent");
+	}
 }
 
 extension NSBundle {

@@ -27,10 +27,10 @@ extension AftershipClient {
 			return;
 		}
 		
-		let request = NSMutableURLRequest(aftershipUrl: url, httpMethod: "POST", apiKey: apiKey);
+		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "POST");
 		request.HTTPBody = httpBody;
 		
-		urlSession.perform(request: request) { (result) in
+		self.performRequest(request: request) { (result) in
 			switch result {
 			case .Success(let response):
 				guard let tracking = response.tracking else {

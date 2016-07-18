@@ -31,12 +31,14 @@ public extension AftershipClient {
 	public func getTracking(trackingNumber trackingNumber: String,
 	                                       slug: String,
 	                                       completionHandler: (result: RequestResult<Tracking>) -> Void) {
-		guard (slug.isEmpty == false && trackingNumber.isEmpty == false) else {
+		let urlComponents = self.createUrlComponents("/trackings/\(slug)/\(trackingNumber)");
+		guard let url = urlComponents.URL where (slug.isEmpty == false && trackingNumber.isEmpty == false) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
 		
-		self.performRequest("/trackings/\(slug)/\(trackingNumber)") { (result) in
+		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
+		self.performRequest(request: request) { (result) in
 			switch result {
 			case .Success(let response):
 				guard let tracking = response.tracking else {

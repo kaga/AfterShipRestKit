@@ -29,7 +29,7 @@ class MetadataTest: XCTestCase {
 			]);
 		XCTAssertEqual(metadata.code, 401);
 		XCTAssertEqual(metadata.message, "Invalid API Key.");
-		XCTAssertEqual(metadata.type, MetadataType.Unauthorized);
+		XCTAssertEqual(metadata.type, RequestErrorType.Unauthorized);
 	}
 	
 	func testInvalidJson() {
