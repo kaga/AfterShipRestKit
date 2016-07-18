@@ -17,6 +17,8 @@
 		121303A11D3B974C00C0EE93 /* TrackingStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */; };
 		121303A41D3C695600C0EE93 /* ExponentialBackoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */; };
 		121303A61D3C6A1700C0EE93 /* ExponentialBackoffTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */; };
+		121303A81D3CC5D200C0EE93 /* AftershipClientTest+RateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A71D3CC5D200C0EE93 /* AftershipClientTest+RateLimit.swift */; };
+		121303AC1D3CD19A00C0EE93 /* AftershipClientTest+ExponentialBackoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303AB1D3CD19A00C0EE93 /* AftershipClientTest+ExponentialBackoff.swift */; };
 		122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -54,6 +56,8 @@
 		1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingStatusTest.swift; sourceTree = "<group>"; };
 		121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExponentialBackoff.swift; sourceTree = "<group>"; };
 		121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExponentialBackoffTest.swift; sourceTree = "<group>"; };
+		121303A71D3CC5D200C0EE93 /* AftershipClientTest+RateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClientTest+RateLimit.swift"; sourceTree = "<group>"; };
+		121303AB1D3CD19A00C0EE93 /* AftershipClientTest+ExponentialBackoff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AftershipClientTest+ExponentialBackoff.swift"; sourceTree = "<group>"; };
 		122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AftershipClientTest.swift; sourceTree = "<group>"; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				122ECD9B1D39E62A000CD05E /* Demo_GetTracking.json */,
 				12D5620D1D379083006C1399 /* Info.plist */,
 				122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */,
+				121303AB1D3CD19A00C0EE93 /* AftershipClientTest+ExponentialBackoff.swift */,
+				121303A71D3CC5D200C0EE93 /* AftershipClientTest+RateLimit.swift */,
 				12BD1DFC1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift */,
 				121303A51D3C6A1700C0EE93 /* ExponentialBackoffTest.swift */,
 				121303941D3B974C00C0EE93 /* extensions */,
@@ -336,8 +342,10 @@
 				1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */,
 				121303A61D3C6A1700C0EE93 /* ExponentialBackoffTest.swift in Sources */,
 				122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */,
+				121303AC1D3CD19A00C0EE93 /* AftershipClientTest+ExponentialBackoff.swift in Sources */,
 				1213039D1D3B974C00C0EE93 /* StringTest.swift in Sources */,
 				1213039C1D3B974C00C0EE93 /* NSURLComponentsTest.swift in Sources */,
+				121303A81D3CC5D200C0EE93 /* AftershipClientTest+RateLimit.swift in Sources */,
 				12BD1DFD1D3B4441002B3C6E /* AftershipClientTest+GetTracking.swift in Sources */,
 				121303A01D3B974C00C0EE93 /* ResponseTest.swift in Sources */,
 				1213039E1D3B974C00C0EE93 /* CheckPointTest.swift in Sources */,

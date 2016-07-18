@@ -16,15 +16,25 @@ public class AftershipClient {
 	public let urlSession: RequestAgent;
 	public let apiKey: String;
 	
+	public var rateLimit: RateLimit? {
+		guard let rateLimit = _rateLimit where (rateLimit.resetDate.timeIntervalSinceNow > 0) else {
+			self._rateLimit = nil;
+			return nil;
+		}
+		return rateLimit;
+	}
+	
 	public var numberOfRetriesSinceServiceUnavailable: Int {
 		return self._numberOfRetriesSinceServiceUnavailable;
 	}
 	
 	private lazy var sleepTimeGenerator: ExponentialBackoff = {
 		return ExponentialBackoff(baseDelayTimeInSeconds: 1, maximumDelayTimeInSeconds: 60);
-	}()
+	}();
 	
 	var _numberOfRetriesSinceServiceUnavailable: Int = 0;
+	
+	var _rateLimit: RateLimit? = nil;
 	
 	public init?(apiKey: String, urlSession: RequestAgent = NSURLSession.sharedSession()) {
 		guard apiKey.isEmpty == false else {
@@ -37,7 +47,12 @@ public class AftershipClient {
 	public func performRequest(path: String, completionHandler: (result: RequestResult<Response>) -> Void) {
 		let urlComponents = self.createUrlComponents(path);
 		guard let url = urlComponents.URL else {
-			completionHandler(result: RequestResult.Error(.MalformedRequest))
+			completionHandler(result: RequestResult.Error(.MalformedRequest));
+			return;
+		}
+		
+		if let rateLimit = self.rateLimit where (rateLimit.remaining == 0) {
+			completionHandler(result: RequestResult.Error(.TooManyRequests));
 			return;
 		}
 		
@@ -66,6 +81,8 @@ public class AftershipClient {
 		return NSMutableURLRequest(aftershipUrl: url, httpMethod: httpMethod, apiKey: self.apiKey);
 	}
 }
+
+public typealias RateLimit = (resetDate: NSDate, remaining: Int, limit: Int);
 
 public enum RequestResult<T> {
 	case Success(response: T);

@@ -50,17 +50,6 @@ class AftershipClientTest: XCTestCase {
 		waitForExpectationsWithTimeout(3, handler: nil);
 	}
 	
-	func testExponentialBackoffRetryOnServiceUnavailable() {
-		let requestDuration = timePerformRequestDuration(.ServiceInternalError, numberOfRetries: 2);
-		XCTAssertGreaterThan(requestDuration, 0,
-		                     "Should limit the client somewhat because we don't want to ping the service to death if it is already down");
-	}
-	
-	func testWhenServiceRunOutOfRequestLimit() {
-		let requestDuration = timePerformRequestDuration(.TooManyRequests, numberOfRetries: 2);
-		XCTAssertGreaterThan(requestDuration, 0, "Both 500 errors and 429 should trigger the backoff procedure");
-	}
-	
 	func testResetSleepTimeOnSuccessfull() {
 		let expectation = expectationWithDescription("Request to a service");
 	
@@ -70,35 +59,6 @@ class AftershipClientTest: XCTestCase {
 			expectation.fulfill();
 		}
 		waitForExpectationsWithTimeout(10, handler: nil);
-	}
-	
-	func timePerformRequestDuration(errorType: RequestErrorType, numberOfRetries: Int) -> NSTimeInterval {
-		let expectation = expectationWithDescription("Request to a service");
-		
-		let agent = ErrorRequestAgent();
-		agent.errorType = errorType;
-		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
-		
-		let testStartTime = NSDate();
-		var requestDuration: NSTimeInterval = 0;
-		
-		let completionHandler: (result: RequestResult<Response>) -> Void = { (result) in
-			switch result {
-			case .Error(let responseErrorType):
-				XCTAssertEqual(responseErrorType, errorType);
-				requestDuration = NSDate().timeIntervalSinceDate(testStartTime);
-				expectation.fulfill();
-				break;
-			default:
-				XCTFail();
-			}
-		}
-		
-		client._numberOfRetriesSinceServiceUnavailable = numberOfRetries;
-		client.performRequest("/foo", completionHandler: completionHandler);
-		
-		waitForExpectationsWithTimeout(10, handler: nil);
-		return requestDuration;
 	}
 }
 
