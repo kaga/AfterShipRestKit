@@ -5,6 +5,6 @@
       location = "group:AftershipApiDemo.playground">
    </FileRef>
    <FileRef
-      location = "container:aftershipsdk/aftership.xcodeproj">
+      location = "container:/Users/Kaga/Documents/aftership2/ios/sdk/aftershipsdk/aftershiprestkit.xcodeproj">
    </FileRef>
 </Workspace>

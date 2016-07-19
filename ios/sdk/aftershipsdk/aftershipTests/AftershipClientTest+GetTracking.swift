@@ -80,7 +80,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		let requestExpectation = expectationWithDescription("Get Tracking with number and slug");
 		
 		self.client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
-			let response = AftershipAssertSuccessResponse(result);
+			let response = AftershipAssertSuccessResponse(result).tracking!;
 			XCTAssertNotNil(response);
 			
 			XCTAssertEqual(response.id, "A1B2C3D4", "Make sure the Tracking model is not garbage");
@@ -186,8 +186,8 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		];
 		agent.data = try! NSJSONSerialization.dataWithJSONObject(getTrackingsJson, options: .PrettyPrinted);
 		client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
-			let error = AftershipAssertErrorReponse(result);
-			XCTAssertEqual(error, RequestErrorType.InvalidJsonData, "Should not handle GET /trackings response");
+			let response = AftershipAssertSuccessResponse(result).tracking;
+			XCTAssertNil(response, "Can't make sense of the response, may be the developer will");
 			requestExpectation.fulfill();
 		}
 		waitForExpectationsWithTimeout(3, handler: nil);

@@ -30,6 +30,23 @@
 		121303C51D3D1F6700C0EE93 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C21D3D1F5000C0EE93 /* Delay.swift */; };
 		121303C81D3E4BB200C0EE93 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C61D3E4B4200C0EE93 /* Json.swift */; };
 		121303CA1D3E4EC000C0EE93 /* TrackingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C91D3E4EC000C0EE93 /* TrackingTest.swift */; };
+		121303CD1D3E756000C0EE93 /* AftershipClient+CreateTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1213038E1D3B92DB00C0EE93 /* AftershipClient+CreateTrackings.swift */; };
+		121303CE1D3E756000C0EE93 /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
+		121303CF1D3E756000C0EE93 /* RequestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303BD1D3D125000C0EE93 /* RequestAgent.swift */; };
+		121303D01D3E756000C0EE93 /* ExponentialBackoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */; };
+		121303D11D3E756000C0EE93 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD881D38E87D000CD05E /* Checkpoint.swift */; };
+		121303D21D3E756000C0EE93 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */; };
+		121303D31D3E756000C0EE93 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
+		121303D41D3E756000C0EE93 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD991D39E385000CD05E /* Response.swift */; };
+		121303D51D3E756000C0EE93 /* AftershipClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD901D38F8F3000CD05E /* AftershipClient.swift */; };
+		121303D61D3E756000C0EE93 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C21D3D1F5000C0EE93 /* Delay.swift */; };
+		121303D71D3E756000C0EE93 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303901D3B96AB00C0EE93 /* Metadata.swift */; };
+		121303D81D3E756000C0EE93 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD891D38E87D000CD05E /* Tracking.swift */; };
+		121303D91D3E756000C0EE93 /* RateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C01D3D1F3B00C0EE93 /* RateLimit.swift */; };
+		121303DA1D3E756000C0EE93 /* NSMutableURLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD831D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift */; };
+		121303DB1D3E756000C0EE93 /* AftershipClient+GetTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD931D38F954000CD05E /* AftershipClient+GetTrackings.swift */; };
+		121303DC1D3E756000C0EE93 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C61D3E4B4200C0EE93 /* Json.swift */; };
+		121303DF1D3E756000C0EE93 /* aftership.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D561FF1D379083006C1399 /* aftership.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -80,6 +97,8 @@
 		121303C21D3D1F5000C0EE93 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		121303C61D3E4B4200C0EE93 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		121303C91D3E4EC000C0EE93 /* TrackingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingTest.swift; sourceTree = "<group>"; };
+		121303E41D3E756000C0EE93 /* AfterShipRestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShipRestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		121303E51D3E756000C0EE93 /* aftershiprestkitiOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "aftershiprestkitiOS copy-Info.plist"; path = "/Users/Kaga/Documents/aftership2/ios/sdk/aftershipsdk/aftershiprestkitiOS copy-Info.plist"; sourceTree = "<absolute>"; };
 		122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AftershipClientTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -95,11 +114,18 @@
 		12D561FC1D379083006C1399 /* AfterShipRestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShipRestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D561FF1D379083006C1399 /* aftership.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aftership.h; sourceTree = "<group>"; };
 		12D562011D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12D562061D379083006C1399 /* aftershipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aftershipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D562061D379083006C1399 /* aftershiprestkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aftershiprestkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D5620D1D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		121303DD1D3E756000C0EE93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12D561F81D379083006C1399 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +233,7 @@
 				12D561FE1D379083006C1399 /* aftership */,
 				12D5620A1D379083006C1399 /* aftershipTests */,
 				12D561FD1D379083006C1399 /* Products */,
+				121303E51D3E756000C0EE93 /* aftershiprestkitiOS copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,7 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				12D561FC1D379083006C1399 /* AfterShipRestKit.framework */,
-				12D562061D379083006C1399 /* aftershipTests.xctest */,
+				12D562061D379083006C1399 /* aftershiprestkitTests.xctest */,
+				121303E41D3E756000C0EE93 /* AfterShipRestKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,6 +283,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		121303DE1D3E756000C0EE93 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121303DF1D3E756000C0EE93 /* aftership.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12D561F91D379083006C1399 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,9 +302,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		12D561FB1D379083006C1399 /* aftershipiOS */ = {
+		121303CB1D3E756000C0EE93 /* aftershiprestkitwatchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipiOS" */;
+			buildConfigurationList = 121303E11D3E756000C0EE93 /* Build configuration list for PBXNativeTarget "aftershiprestkitwatchOS" */;
+			buildPhases = (
+				121303CC1D3E756000C0EE93 /* Sources */,
+				121303DD1D3E756000C0EE93 /* Frameworks */,
+				121303DE1D3E756000C0EE93 /* Headers */,
+				121303E01D3E756000C0EE93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = aftershiprestkitwatchOS;
+			productName = aftership;
+			productReference = 121303E41D3E756000C0EE93 /* AfterShipRestKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		12D561FB1D379083006C1399 /* aftershiprestkitiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershiprestkitiOS" */;
 			buildPhases = (
 				12D561F71D379083006C1399 /* Sources */,
 				12D561F81D379083006C1399 /* Frameworks */,
@@ -279,14 +333,14 @@
 			);
 			dependencies = (
 			);
-			name = aftershipiOS;
+			name = aftershiprestkitiOS;
 			productName = aftership;
 			productReference = 12D561FC1D379083006C1399 /* AfterShipRestKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		12D562051D379083006C1399 /* aftershipTests */ = {
+		12D562051D379083006C1399 /* aftershiprestkitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12D562131D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipTests" */;
+			buildConfigurationList = 12D562131D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershiprestkitTests" */;
 			buildPhases = (
 				12D562021D379083006C1399 /* Sources */,
 				12D562031D379083006C1399 /* Frameworks */,
@@ -297,9 +351,9 @@
 			dependencies = (
 				12D562091D379083006C1399 /* PBXTargetDependency */,
 			);
-			name = aftershipTests;
+			name = aftershiprestkitTests;
 			productName = aftershipTests;
-			productReference = 12D562061D379083006C1399 /* aftershipTests.xctest */;
+			productReference = 12D562061D379083006C1399 /* aftershiprestkitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -320,7 +374,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 12D561F61D379083006C1399 /* Build configuration list for PBXProject "aftership" */;
+			buildConfigurationList = 12D561F61D379083006C1399 /* Build configuration list for PBXProject "aftershiprestkit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -332,13 +386,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				12D561FB1D379083006C1399 /* aftershipiOS */,
-				12D562051D379083006C1399 /* aftershipTests */,
+				12D561FB1D379083006C1399 /* aftershiprestkitiOS */,
+				121303CB1D3E756000C0EE93 /* aftershiprestkitwatchOS */,
+				12D562051D379083006C1399 /* aftershiprestkitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		121303E01D3E756000C0EE93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12D561FA1D379083006C1399 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +421,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		121303CC1D3E756000C0EE93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121303CD1D3E756000C0EE93 /* AftershipClient+CreateTrackings.swift in Sources */,
+				121303CE1D3E756000C0EE93 /* NSURLComponents+Extension.swift in Sources */,
+				121303CF1D3E756000C0EE93 /* RequestAgent.swift in Sources */,
+				121303D01D3E756000C0EE93 /* ExponentialBackoff.swift in Sources */,
+				121303D11D3E756000C0EE93 /* Checkpoint.swift in Sources */,
+				121303D21D3E756000C0EE93 /* TrackingStatus.swift in Sources */,
+				121303D31D3E756000C0EE93 /* String+Extension.swift in Sources */,
+				121303D41D3E756000C0EE93 /* Response.swift in Sources */,
+				121303D51D3E756000C0EE93 /* AftershipClient.swift in Sources */,
+				121303D61D3E756000C0EE93 /* Delay.swift in Sources */,
+				121303D71D3E756000C0EE93 /* Metadata.swift in Sources */,
+				121303D81D3E756000C0EE93 /* Tracking.swift in Sources */,
+				121303D91D3E756000C0EE93 /* RateLimit.swift in Sources */,
+				121303DA1D3E756000C0EE93 /* NSMutableURLRequest+Extension.swift in Sources */,
+				121303DB1D3E756000C0EE93 /* AftershipClient+GetTrackings.swift in Sources */,
+				121303DC1D3E756000C0EE93 /* Json.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12D561F71D379083006C1399 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,12 +495,55 @@
 /* Begin PBXTargetDependency section */
 		12D562091D379083006C1399 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 12D561FB1D379083006C1399 /* aftershipiOS */;
+			target = 12D561FB1D379083006C1399 /* aftershiprestkitiOS */;
 			targetProxy = 12D562081D379083006C1399 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		121303E21D3E756000C0EE93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "aftershiprestkitiOS copy-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aftership.sdk.restkit;
+				PRODUCT_NAME = AfterShipRestKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		121303E31D3E756000C0EE93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "aftershiprestkitiOS copy-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aftership.sdk.restkit;
+				PRODUCT_NAME = AfterShipRestKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+			};
+			name = Release;
+		};
 		12D5620E1D379084006C1399 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -552,7 +680,7 @@
 				INFOPLIST_FILE = aftershipTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaga.sdk.aftershipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = aftershiprestkitTests;
 			};
 			name = Debug;
 		};
@@ -562,14 +690,23 @@
 				INFOPLIST_FILE = aftershipTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaga.sdk.aftershipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = aftershiprestkitTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		12D561F61D379083006C1399 /* Build configuration list for PBXProject "aftership" */ = {
+		121303E11D3E756000C0EE93 /* Build configuration list for PBXNativeTarget "aftershiprestkitwatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				121303E21D3E756000C0EE93 /* Debug */,
+				121303E31D3E756000C0EE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D561F61D379083006C1399 /* Build configuration list for PBXProject "aftershiprestkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12D5620E1D379084006C1399 /* Debug */,
@@ -578,7 +715,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipiOS" */ = {
+		12D562101D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershiprestkitiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12D562111D379084006C1399 /* Debug */,
@@ -587,7 +724,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12D562131D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershipTests" */ = {
+		12D562131D379084006C1399 /* Build configuration list for PBXNativeTarget "aftershiprestkitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12D562141D379084006C1399 /* Debug */,

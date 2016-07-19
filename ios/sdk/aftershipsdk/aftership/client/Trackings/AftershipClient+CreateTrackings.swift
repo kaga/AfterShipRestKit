@@ -8,30 +8,18 @@
 
 import Foundation
 
-public typealias CreateTrackingCompletionHandler = GetTrackingCompletionHandler;
 extension AftershipClient {
 	
-	public func createTracking(tracking model: Tracking, completionHandler: CreateTrackingCompletionHandler) {
+	public func createTracking(tracking model: Tracking, completionHandler: RequestAgentCompletionHandler) {
 		guard let request = self.createRequest(tracking: model) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
 		
-		self.performRequest(request: request) { (result) in
-			switch result {
-			case .Success(let response):
-				guard let tracking = response.tracking else {
-					completionHandler(result: .Error(.InvalidJsonData));
-					break;
-				}
-				completionHandler(result: .Success(response: tracking));
-			case .Error(let errorType):
-				completionHandler(result: .Error(errorType));
-			}
-		}
+		self.performRequest(request: request, completionHandler: completionHandler);
 	}
 	
-	public func createTracking(trackingNumber trackingNumber: String, completionHandler: CreateTrackingCompletionHandler) {
+	public func createTracking(trackingNumber trackingNumber: String, completionHandler: RequestAgentCompletionHandler) {
 		let tracking = Tracking(json: [
 			"tracking_number": trackingNumber
 			]);

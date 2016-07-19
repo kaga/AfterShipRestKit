@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO rename class
 public class AftershipClient {
 	public var apiHost: String = "api.aftership.com";
 	public let apiVersion: Int = 4;
@@ -47,11 +46,11 @@ public class AftershipClient {
 		}
 	}
 	
-	func createUrlComponents(path: String) -> NSURLComponents {
+	public func createUrlComponents(path: String) -> NSURLComponents {
 		return NSURLComponents(aftershipHost: self.apiHost, path: path, apiVersion: self.apiVersion);
 	}
 	
-	func createUrlRequest(aftershipUrl url: NSURL, httpMethod: String) -> NSMutableURLRequest {
+	public func createUrlRequest(aftershipUrl url: NSURL, httpMethod: String) -> NSMutableURLRequest {
 		return NSMutableURLRequest(aftershipUrl: url, httpMethod: httpMethod, apiKey: self.apiKey);
 	}
 	

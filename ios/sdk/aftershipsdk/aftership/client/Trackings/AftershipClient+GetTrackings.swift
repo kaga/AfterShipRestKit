@@ -12,7 +12,7 @@ public extension AftershipClient {
 	
 	public func getTracking(trackingNumber trackingNumber: String,
 	                                       slug: String,
-	                                       completionHandler: GetTrackingCompletionHandler) {
+	                                       completionHandler: RequestAgentCompletionHandler) {
 		guard let parameters = GetTrackingRequestParameters(slug: slug, trackingNumber: trackingNumber, fields: nil) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
@@ -21,25 +21,14 @@ public extension AftershipClient {
 	}
 	
 	public func getTracking(parameters parameters: GetTrackingRequestParameters,
-										completionHandler: GetTrackingCompletionHandler) {
+										completionHandler: RequestAgentCompletionHandler) {
 		guard let url = getTrackingUrl(parameters) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
 		
 		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
-		self.performRequest(request: request) { (result) in
-			switch result {
-			case .Success(let response):
-				guard let tracking = response.tracking else {
-					completionHandler(result: .Error(.InvalidJsonData));
-					break;
-				}
-				completionHandler(result: .Success(response: tracking));
-			case .Error(let errorType):
-				completionHandler(result: .Error(errorType));
-			}
-		}
+		self.performRequest(request: request, completionHandler: completionHandler);
 	}
 	
 	private func getTrackingUrl(parameters: GetTrackingRequestParameters) -> NSURL? {
@@ -83,5 +72,3 @@ public struct GetTrackingRequestParameters {
 		self.fields = fields?.map({ $0.key });
 	}
 }
-
-public typealias GetTrackingCompletionHandler = (result: RequestResult<Tracking>) -> Void

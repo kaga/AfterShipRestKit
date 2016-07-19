@@ -19,12 +19,12 @@ public struct Tracking {
 		self.trackingNumber = trackingNumber;
 	}
 	
-	init() {
-		self.model = Json(json: [String: AnyObject]());
+	public init(json: [String: AnyObject]) {
+		self.model = Json(json: json);
 	}
 	
-	init(json: [String: AnyObject]) {
-		self.model = Json(json: json);
+	init() {
+		self.model = Json(json: [String: AnyObject]());
 	}
 }
 
