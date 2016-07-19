@@ -28,23 +28,15 @@ client?.createTracking(trackingNumber: "") { (result) in
 	}
 }
 
-//You can extend this api easily
-struct GetTrackingsResponse {
-	var json: [String: AnyObject];
-	
-	var trackings: [Tracking]? {
-		return (json["trackings"] as? [[String: AnyObject]])?.map(Tracking.init(json:));
-	}
-}
-
-client?.performRequest("/trackings") { (result) in
+let url = client?.createUrlComponents("/trackings").URL!;
+let request = client!.createUrlRequest(aftershipUrl: url!, httpMethod: "GET");
+client?.performRequest(request: request) { (result) in
 	switch result {
 	case .Success(let response):
-		let trackings = GetTrackingsResponse(json: response.data).trackings;
-		print("\(trackings?.count) Trackings");
+//		let data = try! NSJSONSerialization.dataWithJSONObject(response.json, options: .PrettyPrinted);
+		print(response.json)
 		break;
-	case .Error(let errorType):
-		print(errorType);
+	default:
 		break;
 	}
 }
