@@ -13,7 +13,7 @@ public extension AftershipClient {
 	public func getTracking(trackingNumber trackingNumber: String,
 	                                       slug: String,
 	                                       completionHandler: GetTrackingCompletionHandler) {
-		guard let parameters = GetTrackingRequestParameters(slug: slug, trackingNumber: trackingNumber) else {
+		guard let parameters = GetTrackingRequestParameters(slug: slug, trackingNumber: trackingNumber, fields: nil) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
@@ -61,21 +61,26 @@ public extension AftershipClient {
 
 public struct GetTrackingRequestParameters {
 	public let path: String;
-	public var fields: [String]? = nil;
+	public var fields: [String]?;
 	public var responseLanguage: String? = nil;
 	
-	public init?(slug: String, trackingNumber: String) {
+	public init?(slug: String, trackingNumber: String, fields: [TrackingField]?) {
 		guard (slug.isEmpty == false && trackingNumber.isEmpty == false) else {
 			return nil;
 		}
-		self.path = "/trackings/\(slug)/\(trackingNumber)";
+		self.init(path: "/trackings/\(slug)/\(trackingNumber)", fields: fields);
 	}
 	
-	public init?(aftershipId identifier: String) {
+	public init?(aftershipId identifier: String, fields: [TrackingField]?) {
 		guard (identifier.isEmpty == false) else {
 			return nil;
-		}
-		self.path = "/trackings/\(identifier)";
+		}	
+		self.init(path: "/trackings/\(identifier)", fields: fields);
+	}
+	
+	init(path: String, fields: [TrackingField]?) {
+		self.path = path;
+		self.fields = fields?.map({ $0.key });
 	}
 }
 

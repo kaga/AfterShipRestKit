@@ -25,21 +25,23 @@ class AftershipClientTest_GetTracking: XCTestCase {
 	}
 	
 	func testGetTrackingRequestParameters() {
-		XCTAssertNil(GetTrackingRequestParameters(slug: "", trackingNumber: ""), "Slug and tracking number can't be empty");
+		XCTAssertNil(GetTrackingRequestParameters(slug: "", trackingNumber: "", fields: nil), "Slug and tracking number can't be empty");
 		
-		let parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456");
+		let parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456", fields: [.AftershipId]);
 		XCTAssertNotNil(parameters);
 		XCTAssertEqual(parameters?.path, "/trackings/ABC/123456");
+		XCTAssertTrue(parameters!.fields!.contains(TrackingField.AftershipId.rawValue));
 
-		XCTAssertNil(GetTrackingRequestParameters(aftershipId: ""), "Aftership id can't be empty");
-		let getByIdParameters = GetTrackingRequestParameters(aftershipId: "123456");
+		XCTAssertNil(GetTrackingRequestParameters(aftershipId: "", fields: nil), "Aftership id can't be empty");
+		let getByIdParameters = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
 		XCTAssertEqual(getByIdParameters?.path, "/trackings/123456");
+		XCTAssertNil(getByIdParameters?.fields);
 	}
 	
 	func testGetTrackingWithOptionalParameters() {
 		let requestExpectation = expectationWithDescription("Get Tracking with optional parameters");
 		
-		var parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456");
+		var parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456", fields: nil);
 		parameters?.fields = ["title", "id"];
 		parameters?.responseLanguage = "en";
 		
@@ -62,7 +64,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 	func testGetTrackingWithAftershipId() {
 		let requestExpectation = expectationWithDescription("Get Tracking with Aftership ID");
 		
-		let parameters = GetTrackingRequestParameters(aftershipId: "123456");
+		let parameters = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
 		
 		client.getTracking(parameters: parameters!) { (result) in
 			AftershipAssertSuccessResponse(result);

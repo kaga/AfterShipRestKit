@@ -80,9 +80,6 @@ public extension Tracking {
 		get {
 			return model.get(.AftershipId)
 		}
-		set(newValue) {
-			model.set(.AftershipId, newValue: newValue);
-		}
 	}
 	
 	public var trackingNumber: String? {
@@ -99,18 +96,12 @@ public extension Tracking {
 			let dateString: String? = model.get(.CreatedAt);
 			return dateString?.dateValue;
 		}
-		set(newValue) {
-			model.set(.CreatedAt, newValue: newValue?.isoString);
-		}
 	}
 	
 	public var updatedAt: NSDate? {
 		get {
 			let dateString: String? = model.get(.UpdatedAt)
 			return dateString?.dateValue;
-		}
-		set(newValue) {
-			model.set(.UpdatedAt, newValue: newValue?.isoString);
 		}
 	}
 	
@@ -173,9 +164,6 @@ public extension Tracking {
 		get {
 			return model.get(.Active);
 		}
-		set(newValue) {
-			model.set(.Active, newValue: newValue);
-		}
 	}
 	
 	public var pushNotificationAndroidIds: [String]? {
@@ -236,9 +224,6 @@ public extension Tracking {
 		get {
 			return model.get(.DeliveryTimeInDay);
 		}
-		set(newValue) {
-			model.set(.DeliveryTimeInDay, newValue: newValue);
-		}
 	}
 	
 	public var destinationCountryIsoCode: String? {
@@ -252,10 +237,8 @@ public extension Tracking {
 	
 	public var expectedDelivery: NSDate? {
 		get {
-			return model.get(.ExpectedDelivery);
-		}
-		set(newValue) {
-			model.set(.ExpectedDelivery, newValue: newValue);
+			let dateString: String? = model.get(.ExpectedDelivery);
+			return dateString?.dateValue;
 		}
 	}
 	
@@ -281,17 +264,11 @@ public extension Tracking {
 		get {
 			return model.get(.OriginCountryIsoCode);
 		}
-		set(newValue) {
-			model.set(.OriginCountryIsoCode, newValue: newValue);
-		}
 	}
 	
 	public var uniqueToken: String? {
 		get {
 			return model.get(.UniqueToken);
-		}
-		set(newValue) {
-			model.set(.UniqueToken, newValue: newValue);
 		}
 	}
 	
@@ -299,17 +276,11 @@ public extension Tracking {
 		get {
 			return model.get(.ShipmentPackageCount);
 		}
-		set(newValue) {
-			model.set(.ShipmentPackageCount, newValue: newValue);
-		}
 	}
 	
 	public var shipmentType: String? {
 		get {
 			return model.get(.ShipmentType);
-		}
-		set(newValue) {
-			model.set(.ShipmentType, newValue: newValue);
 		}
 	}
 	
@@ -317,17 +288,11 @@ public extension Tracking {
 		get {
 			return model.get(.ShipmentWeight);
 		}
-		set(newValue) {
-			model.set(.ShipmentWeight, newValue: newValue);
-		}
 	}
 	
 	public var shipmentWeightUnit: String? {
 		get {
 			return model.get(.ShipmentWeightUnit);
-		}
-		set(newValue) {
-			model.set(.ShipmentWeightUnit, newValue: newValue);
 		}
 	}
 	
@@ -335,17 +300,11 @@ public extension Tracking {
 		get {
 			return model.get(.SignedBy);
 		}
-		set(newValue) {
-			model.set(.SignedBy, newValue: newValue);
-		}
 	}
 	
 	public var source: String? {
 		get {
 			return model.get(.Source);
-		}
-		set(newValue) {
-			model.set(.Source, newValue: newValue);
 		}
 	}
 	
@@ -356,9 +315,6 @@ public extension Tracking {
 					return nil;
 			}
 			return tag;
-		}
-		set(newValue) {
-			model.set(.Tag, newValue: newValue?.rawValue);
 		}
 	}
 	
@@ -374,9 +330,6 @@ public extension Tracking {
 	public var trackedCount: Int? {
 		get {
 			return model.get(.TrackedCount);
-		}
-		set(newValue) {
-			model.set(.TrackedCount, newValue: newValue);
 		}
 	}
 	
