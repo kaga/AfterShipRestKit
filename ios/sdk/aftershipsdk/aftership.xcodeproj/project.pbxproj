@@ -28,6 +28,8 @@
 		121303BF1D3D128300C0EE93 /* RequestAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303BD1D3D125000C0EE93 /* RequestAgent.swift */; };
 		121303C41D3D1F6700C0EE93 /* RateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C01D3D1F3B00C0EE93 /* RateLimit.swift */; };
 		121303C51D3D1F6700C0EE93 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C21D3D1F5000C0EE93 /* Delay.swift */; };
+		121303C81D3E4BB200C0EE93 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C61D3E4B4200C0EE93 /* Json.swift */; };
+		121303CA1D3E4EC000C0EE93 /* TrackingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C91D3E4EC000C0EE93 /* TrackingTest.swift */; };
 		122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -76,6 +78,8 @@
 		121303BD1D3D125000C0EE93 /* RequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAgent.swift; sourceTree = "<group>"; };
 		121303C01D3D1F3B00C0EE93 /* RateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateLimit.swift; sourceTree = "<group>"; };
 		121303C21D3D1F5000C0EE93 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		121303C61D3E4B4200C0EE93 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
+		121303C91D3E4EC000C0EE93 /* TrackingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingTest.swift; sourceTree = "<group>"; };
 		122ECD7A1D38D4C6000CD05E /* AftershipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AftershipClientTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				121303991D3B974C00C0EE93 /* MetadataTest.swift */,
 				1213039A1D3B974C00C0EE93 /* ResponseTest.swift */,
 				1213039B1D3B974C00C0EE93 /* TrackingStatusTest.swift */,
+				121303C91D3E4EC000C0EE93 /* TrackingTest.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			children = (
 				121303A31D3C695600C0EE93 /* ExponentialBackoff.swift */,
 				121303C21D3D1F5000C0EE93 /* Delay.swift */,
+				121303C61D3E4B4200C0EE93 /* Json.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				121303C41D3D1F6700C0EE93 /* RateLimit.swift in Sources */,
 				122ECD841D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift in Sources */,
 				122ECD941D38F954000CD05E /* AftershipClient+GetTrackings.swift in Sources */,
+				121303C81D3E4BB200C0EE93 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121303CA1D3E4EC000C0EE93 /* TrackingTest.swift in Sources */,
 				1213039F1D3B974C00C0EE93 /* MetadataTest.swift in Sources */,
 				121303A61D3C6A1700C0EE93 /* ExponentialBackoffTest.swift in Sources */,
 				122ECD7B1D38D4C6000CD05E /* AftershipClientTest.swift in Sources */,

@@ -10,25 +10,12 @@ import Foundation
 
 public typealias CreateTrackingCompletionHandler = GetTrackingCompletionHandler;
 extension AftershipClient {
-	public func createTracking(trackingNumber trackingNumber: String, completionHandler: CreateTrackingCompletionHandler) {
-		let urlComponents = NSURLComponents(aftershipHost: apiHost, path: "/trackings", apiVersion: apiVersion);
-		guard let url = urlComponents.URL where (trackingNumber.isEmpty == false) else {
+	
+	public func createTracking(tracking model: Tracking, completionHandler: CreateTrackingCompletionHandler) {
+		guard let request = self.createRequest(tracking: model) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
-		
-		let body: [String: AnyObject] = [
-			"tracking": [
-				"tracking_number": trackingNumber
-			]
-		]
-		guard let httpBody = try? NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted) else {
-			completionHandler(result: RequestResult.Error(.MalformedRequest));
-			return;
-		}
-		
-		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "POST");
-		request.HTTPBody = httpBody;
 		
 		self.performRequest(request: request) { (result) in
 			switch result {
@@ -42,5 +29,30 @@ extension AftershipClient {
 				completionHandler(result: .Error(errorType));
 			}
 		}
+	}
+	
+	public func createTracking(trackingNumber trackingNumber: String, completionHandler: CreateTrackingCompletionHandler) {
+		let tracking = Tracking(json: [
+			"tracking_number": trackingNumber
+			]);
+		self.createTracking(tracking: tracking, completionHandler: completionHandler);
+	}
+	
+	private func createRequest(tracking model: Tracking) -> NSMutableURLRequest? {
+		let urlComponents = NSURLComponents(aftershipHost: apiHost, path: "/trackings", apiVersion: apiVersion);
+		guard let url = urlComponents.URL where (model.trackingNumber?.isEmpty == false) else {
+			return nil;
+		}
+		
+		let body: [String: AnyObject] = [
+			"tracking": model.json
+		];
+		guard let httpBody = try? NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted) else {
+			return nil;
+		}
+		
+		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "POST");
+		request.HTTPBody = httpBody;
+		return request;
 	}
 }

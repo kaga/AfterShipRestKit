@@ -24,6 +24,56 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		super.tearDown();
 	}
 	
+	func testGetTrackingRequestParameters() {
+		XCTAssertNil(GetTrackingRequestParameters(slug: "", trackingNumber: ""), "Slug and tracking number can't be empty");
+		
+		let parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456");
+		XCTAssertNotNil(parameters);
+		XCTAssertEqual(parameters?.path, "/trackings/ABC/123456");
+
+		XCTAssertNil(GetTrackingRequestParameters(aftershipId: ""), "Aftership id can't be empty");
+		let getByIdParameters = GetTrackingRequestParameters(aftershipId: "123456");
+		XCTAssertEqual(getByIdParameters?.path, "/trackings/123456");
+	}
+	
+	func testGetTrackingWithOptionalParameters() {
+		let requestExpectation = expectationWithDescription("Get Tracking with optional parameters");
+		
+		var parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456");
+		parameters?.fields = ["title", "id"];
+		parameters?.responseLanguage = "en";
+		
+		client.getTracking(parameters: parameters!) { (result) in
+			AftershipAssertSuccessResponse(result);
+			let lastRequest = self.agent.lastUrlRequest!;
+			let url = lastRequest.URL!.absoluteString;
+			XCTAssertTrue(url.containsString("https://api.aftership.com/v4"), "Check against the basic things as well");
+			XCTAssertEqual(lastRequest.allHTTPHeaderFields?["aftership-api-key"], "AfterShipApiKey");
+			XCTAssertEqual(lastRequest.allHTTPHeaderFields?["Content-Type"], "application/json");
+			
+			XCTAssertTrue(url.containsString("/trackings/ABC/123456"));
+			XCTAssertTrue(url.containsString("fields=title,id"), "Should append optional parameters to url");
+			XCTAssertTrue(url.containsString("lang=en"));
+			requestExpectation.fulfill();
+		}
+		waitForExpectationsWithTimeout(3, handler: nil);
+	}
+	
+	func testGetTrackingWithAftershipId() {
+		let requestExpectation = expectationWithDescription("Get Tracking with Aftership ID");
+		
+		let parameters = GetTrackingRequestParameters(aftershipId: "123456");
+		
+		client.getTracking(parameters: parameters!) { (result) in
+			AftershipAssertSuccessResponse(result);
+			let lastRequest = self.agent.lastUrlRequest!;
+			let url = lastRequest.URL!.absoluteString;
+			XCTAssertTrue(url.containsString("/trackings/123456"));
+			requestExpectation.fulfill();
+		}
+		waitForExpectationsWithTimeout(3, handler: nil);
+	}
+	
 	func testGetTrackingBySlugAndTrackingNumber() {
 		let requestExpectation = expectationWithDescription("Get Tracking with number and slug");
 		
