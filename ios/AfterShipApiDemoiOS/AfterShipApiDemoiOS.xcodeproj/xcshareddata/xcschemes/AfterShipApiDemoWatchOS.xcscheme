@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-               BuildableName = "AftershipWatchApp.app"
-               BlueprintName = "AftershipWatchApp"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+               BuildableName = "AfterShipApiDemoWatchOS.app"
+               BlueprintName = "AfterShipApiDemoWatchOS"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1213043E1D3EFC0900C0EE93"
-               BuildableName = "AftershipWatchApp Extension.appex"
-               BlueprintName = "AftershipWatchApp Extension"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "121304821D3F0BBD00C0EE93"
+               BuildableName = "AfterShipApiDemoiOS.app"
+               BlueprintName = "AfterShipApiDemoiOS"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -42,10 +42,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
-               BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
-               BlueprintName = "AftershipApiDemo"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "121304D21D3F0BEE00C0EE93"
+               BuildableName = "AfterShipApiDemoWatchOS Extension.appex"
+               BlueprintName = "AfterShipApiDemoWatchOS Extension"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-            BuildableName = "AftershipWatchApp.app"
-            BlueprintName = "AftershipWatchApp"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+            BuildableName = "AfterShipApiDemoWatchOS.app"
+            BlueprintName = "AfterShipApiDemoWatchOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,22 +82,22 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.carousel"
-         RemotePath = "/AftershipApiDemo">
+         RemotePath = "/AfterShipApiDemoiOS">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-            BuildableName = "AftershipWatchApp.app"
-            BlueprintName = "AftershipWatchApp"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+            BuildableName = "AfterShipApiDemoWatchOS.app"
+            BlueprintName = "AfterShipApiDemoWatchOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-            BuildableName = "AftershipWatchApp.app"
-            BlueprintName = "AftershipWatchApp"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+            BuildableName = "AfterShipApiDemoWatchOS.app"
+            BlueprintName = "AfterShipApiDemoWatchOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -112,22 +112,22 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.carousel"
-         RemotePath = "/AftershipApiDemo">
+         RemotePath = "/AfterShipApiDemoiOS">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-            BuildableName = "AftershipWatchApp.app"
-            BlueprintName = "AftershipWatchApp"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+            BuildableName = "AfterShipApiDemoWatchOS.app"
+            BlueprintName = "AfterShipApiDemoWatchOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
-            BuildableName = "AftershipWatchApp.app"
-            BlueprintName = "AftershipWatchApp"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304C61D3F0BEE00C0EE93"
+            BuildableName = "AfterShipApiDemoWatchOS.app"
+            BlueprintName = "AfterShipApiDemoWatchOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

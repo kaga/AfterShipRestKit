@@ -6,7 +6,7 @@ XCPlaygroundPage.currentPage.needsIndefiniteExecution = true;
 
 let apiKey = "";
 
-let client = AftershipClient(apiKey: apiKey);
+let client = AfterShipClient(apiKey: apiKey);
 
 client?.getTracking(trackingNumber: "", slug: "") { (result) in
 	switch result {

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AftershipApiDemo
+//  AfterShipApiDemoiOS
 //
 //  Created by Kwun Ho Chan on 20/07/16.
 //  Copyright © 2016 kaga. All rights reserved.
@@ -13,14 +13,13 @@ import AfterShipRestKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var client: AfterShipClient?;
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		// Override point for customization after application launch.
 		if let client = AfterShipClient(apiKey: "123321") {
 			print(client.apiHost);
-			self.client = client;
 		}
+
+		// Override point for customization after application launch.
 		return true
 	}
 

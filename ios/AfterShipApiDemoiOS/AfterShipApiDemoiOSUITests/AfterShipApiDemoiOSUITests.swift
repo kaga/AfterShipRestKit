@@ -1,6 +1,6 @@
 //
-//  AftershipApiDemoUITests.swift
-//  AftershipApiDemoUITests
+//  AfterShipApiDemoiOSUITests.swift
+//  AfterShipApiDemoiOSUITests
 //
 //  Created by Kwun Ho Chan on 20/07/16.
 //  Copyright © 2016 kaga. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class AftershipApiDemoUITests: XCTestCase {
+class AfterShipApiDemoiOSUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

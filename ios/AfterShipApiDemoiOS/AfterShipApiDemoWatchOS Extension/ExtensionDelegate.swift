@@ -1,6 +1,6 @@
 //
 //  ExtensionDelegate.swift
-//  AftershipWatchApp Extension
+//  AfterShipApiDemoWatchOS Extension
 //
 //  Created by Kwun Ho Chan on 20/07/16.
 //  Copyright © 2016 kaga. All rights reserved.
@@ -12,10 +12,11 @@ import AfterShipRestKit
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
 		if let client = AfterShipClient(apiKey: "123321") {
 			print(client.apiHost);
 		}
+
+        // Perform any final initialization of your application.
     }
 
     func applicationDidBecomeActive() {

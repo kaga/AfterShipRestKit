@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
+      location = "group:AfterShipApiDemoiOS/AfterShipApiDemoiOS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AftershipApiDemo/AftershipApiDemo.xcodeproj">
+      location = "group:sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:AftershipApiDemo.playground">

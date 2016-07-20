@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
-               BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
-               BlueprintName = "AftershipApiDemo"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "121304821D3F0BBD00C0EE93"
+               BuildableName = "AfterShipApiDemoiOS.app"
+               BlueprintName = "AfterShipApiDemoiOS"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,36 +26,47 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "121304021D3EFAAB00C0EE93"
-               BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.xctest"
-               BlueprintName = "AftershipApiDemoTests"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "12D562051D379083006C1399"
+               BuildableName = "aftershiprestkitTests.xctest"
+               BlueprintName = "aftershiprestkitTests"
+               ReferencedContainer = "container:../sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1213040D1D3EFAAB00C0EE93"
-               BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.xctest"
-               BlueprintName = "AftershipApiDemoUITests"
-               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+               BlueprintIdentifier = "121304A11D3F0BBD00C0EE93"
+               BuildableName = "AfterShipApiDemoiOSUITests.xctest"
+               BlueprintName = "AfterShipApiDemoiOSUITests"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "121304961D3F0BBD00C0EE93"
+               BuildableName = "AfterShipApiDemoiOSTests.xctest"
+               BlueprintName = "AfterShipApiDemoiOSTests"
+               ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
-            BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
-            BlueprintName = "AftershipApiDemo"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304821D3F0BBD00C0EE93"
+            BuildableName = "AfterShipApiDemoiOS.app"
+            BlueprintName = "AfterShipApiDemoiOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +86,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
-            BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
-            BlueprintName = "AftershipApiDemo"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304821D3F0BBD00C0EE93"
+            BuildableName = "AfterShipApiDemoiOS.app"
+            BlueprintName = "AfterShipApiDemoiOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +105,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
-            BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
-            BlueprintName = "AftershipApiDemo"
-            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            BlueprintIdentifier = "121304821D3F0BBD00C0EE93"
+            BuildableName = "AfterShipApiDemoiOS.app"
+            BlueprintName = "AfterShipApiDemoiOS"
+            ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

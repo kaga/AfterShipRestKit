@@ -1,6 +1,6 @@
 //
 //  InterfaceController.swift
-//  AftershipWatchApp Extension
+//  AfterShipApiDemoWatchOS Extension
 //
 //  Created by Kwun Ho Chan on 20/07/16.
 //  Copyright © 2016 kaga. All rights reserved.
