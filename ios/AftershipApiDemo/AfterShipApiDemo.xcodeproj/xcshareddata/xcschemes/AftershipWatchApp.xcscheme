@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0730"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+               BuildableName = "AftershipWatchApp.app"
+               BlueprintName = "AftershipWatchApp"
+               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1213043E1D3EFC0900C0EE93"
+               BuildableName = "AftershipWatchApp Extension.appex"
+               BlueprintName = "AftershipWatchApp Extension"
+               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "121303EE1D3EFAAB00C0EE93"
+               BuildableName = "AfterShipApiDemo.temp_caseinsensitive_rename.app"
+               BlueprintName = "AftershipApiDemo"
+               ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+            BuildableName = "AftershipWatchApp.app"
+            BlueprintName = "AftershipWatchApp"
+            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/AftershipApiDemo">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+            BuildableName = "AftershipWatchApp.app"
+            BlueprintName = "AftershipWatchApp"
+            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+            BuildableName = "AftershipWatchApp.app"
+            BlueprintName = "AftershipWatchApp"
+            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.carousel"
+         RemotePath = "/AftershipApiDemo">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+            BuildableName = "AftershipWatchApp.app"
+            BlueprintName = "AftershipWatchApp"
+            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "121304321D3EFC0800C0EE93"
+            BuildableName = "AftershipWatchApp.app"
+            BlueprintName = "AftershipWatchApp"
+            ReferencedContainer = "container:AfterShipApiDemo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
