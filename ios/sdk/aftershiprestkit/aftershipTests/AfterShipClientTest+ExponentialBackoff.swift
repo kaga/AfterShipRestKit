@@ -1,5 +1,5 @@
 //
-//  AftershipClientTest+ExponentialBackoff.swift
+//  AfterShipClientTest+ExponentialBackoff.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 18/07/16.
@@ -9,11 +9,11 @@
 import XCTest
 @testable import AfterShipRestKit
 
-class AftershipClientTest_ExponentialBackoff: XCTestCase {
+class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 	
 	func testGetNumberOfRetriesSinceServiceUnavailable() {
 		let agent = MockRequestAgent();
-		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
 		XCTAssertEqual(client.numberOfRetriesSinceServiceUnavailable, 0, "Should be 0 because never make a request yet");
 		
 		client._numberOfRetriesSinceServiceUnavailable = (10, NSDate(timeIntervalSinceNow: -61));
@@ -27,13 +27,13 @@ class AftershipClientTest_ExponentialBackoff: XCTestCase {
 		let expectation = expectationWithDescription("Request to service some time later");
 		
 		let agent = MockRequestAgent();
-		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
 		
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;
 		
 		let completionHandler: RequestAgentCompletionHandler = { (result) in
-			AftershipAssertSuccessResponse(result);
+			AfterShipAssertSuccessResponse(result);
 			requestDuration = NSDate().timeIntervalSinceDate(testStartTime);
 			expectation.fulfill();
 		}
@@ -51,11 +51,11 @@ class AftershipClientTest_ExponentialBackoff: XCTestCase {
 		let expectation = expectationWithDescription("Service Error");
 		
 		let agent = ErrorRequestAgent();
-		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
 		
 		XCTAssertNil(client._numberOfRetriesSinceServiceUnavailable, "Initialial state check");
 		client.performMockRequest{ (result) in
-			AftershipAssertErrorReponse(result);
+			AfterShipAssertErrorReponse(result);
 			XCTAssertNotNil(client._numberOfRetriesSinceServiceUnavailable);
 			expectation.fulfill();
 		}
@@ -78,13 +78,13 @@ class AftershipClientTest_ExponentialBackoff: XCTestCase {
 		
 		let agent = ErrorRequestAgent();
 		agent.errorType = errorType;
-		let client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
 		
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;
 		
 		let completionHandler: RequestAgentCompletionHandler = { (result) in
-			let responseErrorType = AftershipAssertErrorReponse(result);
+			let responseErrorType = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(responseErrorType, errorType);
 			requestDuration = NSDate().timeIntervalSinceDate(testStartTime);
 			expectation.fulfill();

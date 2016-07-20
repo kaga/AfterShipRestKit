@@ -1,5 +1,5 @@
 //
-//  AftershipClientTest+CreateTracking.swift
+//  AfterShipClientTest+CreateTracking.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 18/07/16.
@@ -9,14 +9,14 @@
 import XCTest
 @testable import AfterShipRestKit
 
-class AftershipClientTest_CreateTracking: XCTestCase {
-	var client: AftershipClient!;
+class AfterShipClientTest_CreateTracking: XCTestCase {
+	var client: AfterShipClient!;
 	var agent: MockRequestAgent!;
 	
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent(fileName: "Demo_CreateTracking_Response_Body");
-		self.client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
 	}
 	
 	override func tearDown() {
@@ -28,7 +28,7 @@ class AftershipClientTest_CreateTracking: XCTestCase {
 		let expectation = expectationWithDescription("Create Tracking Request");
 		
 		client.createTracking(trackingNumber: "123456789") { (result) in
-			let response = AftershipAssertSuccessResponse(result).tracking!;
+			let response = AfterShipAssertSuccessResponse(result).tracking!;
 			let request = self.agent.lastUrlRequest!;
 			XCTAssertEqual(request.HTTPMethod, "POST");
 			XCTAssertEqual(response.id, "53aa7b5c415a670000000021");
@@ -42,7 +42,7 @@ class AftershipClientTest_CreateTracking: XCTestCase {
 		let expectation = expectationWithDescription("Create Tracking Request");
 		client._rateLimit = RateLimit(resetDate: NSDate().dateByAddingTimeInterval(10), remaining: 0, limit: 600);
 		client.createTracking(trackingNumber: "123456789") { (result) in
-			let errorType = AftershipAssertErrorReponse(result);
+			let errorType = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(errorType, RequestErrorType.TooManyRequests,
 			               "Should not make request to service when quota has ran out");
 			expectation.fulfill();
@@ -55,7 +55,7 @@ class AftershipClientTest_CreateTracking: XCTestCase {
 		let expectation = expectationWithDescription("Create Tracking Request");
 		
 		client.createTracking(trackingNumber: "") { (result) in
-			let errorType = AftershipAssertErrorReponse(result);
+			let errorType = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(errorType, RequestErrorType.MalformedRequest,
 			               "Should have a non-empty tracking number to create");
 			expectation.fulfill();
@@ -78,7 +78,7 @@ class AftershipClientTest_CreateTracking: XCTestCase {
 		];
 		agent.data = try! NSJSONSerialization.dataWithJSONObject(getTrackingsJson, options: .PrettyPrinted);
 		client.createTracking(trackingNumber: "12345", completionHandler: { (result) in
-			let response = AftershipAssertSuccessResponse(result).tracking;
+			let response = AfterShipAssertSuccessResponse(result).tracking;
 			XCTAssertNil(response, "Can't make sense of the response, may be the developer will");
 			requestExpectation.fulfill();
 		})

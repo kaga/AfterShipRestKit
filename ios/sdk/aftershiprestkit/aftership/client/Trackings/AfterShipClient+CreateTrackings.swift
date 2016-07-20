@@ -1,5 +1,5 @@
 //
-//  AftershipClient+CreateTrackings.swift
+//  AfterShipClient+CreateTrackings.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 17/07/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension AftershipClient {
+extension AfterShipClient {
 	
 	public func createTracking(tracking model: Tracking, completionHandler: RequestAgentCompletionHandler) {
 		guard let request = self.createRequest(tracking: model) else {

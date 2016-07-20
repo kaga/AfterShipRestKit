@@ -1,5 +1,5 @@
 //
-//  AftershipClientTest+RateLimit.swift
+//  AfterShipClientTest+RateLimit.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 18/07/16.
@@ -9,14 +9,14 @@
 import XCTest
 @testable import AfterShipRestKit
 
-class AftershipClientTest_RateLimit: XCTestCase {
-	var client: AftershipClient!;
+class AfterShipClientTest_RateLimit: XCTestCase {
+	var client: AfterShipClient!;
 	var agent: MockRequestAgent!;
 	
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
 	}
 	
 	override func tearDown() {
@@ -31,7 +31,7 @@ class AftershipClientTest_RateLimit: XCTestCase {
 		XCTAssertNotNil(client.rateLimit);
 		
 		client.performMockRequest{ (result) in
-			let errorType = AftershipAssertErrorReponse(result);
+			let errorType = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(errorType, RequestErrorType.TooManyRequests, "Should not make request to service when quota has ran out");
 			expectation.fulfill();
 		}
@@ -44,7 +44,7 @@ class AftershipClientTest_RateLimit: XCTestCase {
 		client._rateLimit = RateLimit(resetDate: NSDate().dateByAddingTimeInterval(-1), remaining: 0, limit: 600);
 		
 		client.performMockRequest{ (result) in
-			let response = AftershipAssertSuccessResponse(result);
+			let response = AfterShipAssertSuccessResponse(result);
 			XCTAssertNotNil(response, "Should make request normally after the reset date");
 			expectation.fulfill();
 		}

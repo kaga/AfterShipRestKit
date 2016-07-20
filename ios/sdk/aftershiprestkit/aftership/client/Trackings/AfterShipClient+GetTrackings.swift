@@ -1,5 +1,5 @@
 //
-//  AftershipClient+GetTrackings.swift
+//  AfterShipClient+GetTrackings.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 15/07/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension AftershipClient {
+public extension AfterShipClient {
 	
 	public func getTracking(trackingNumber trackingNumber: String,
 	                                       slug: String,

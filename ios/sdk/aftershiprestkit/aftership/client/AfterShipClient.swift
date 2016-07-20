@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AftershipClient {
+public class AfterShipClient {
 	public var apiHost: String = "api.aftership.com";
 	public let apiVersion: Int = 4;
 	public let apiKey: String;
@@ -81,7 +81,7 @@ public class AftershipClient {
 	}
 }
 
-public extension AftershipClient {
+public extension AfterShipClient {
 	public var rateLimit: RateLimit? {
 		guard let rateLimit = _rateLimit where (rateLimit.resetDate.timeIntervalSinceNow > 0) else {
 			return nil;

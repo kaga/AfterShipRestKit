@@ -9,7 +9,7 @@
 import XCTest
 @testable import AfterShipRestKit
 
-func AftershipAssertSuccessResponse<T>(result: RequestResult<T>) -> T! {
+func AfterShipAssertSuccessResponse<T>(result: RequestResult<T>) -> T! {
 	switch result {
 	case .Success(let response):
 		return response;
@@ -19,7 +19,7 @@ func AftershipAssertSuccessResponse<T>(result: RequestResult<T>) -> T! {
 	return nil;
 }
 
-func AftershipAssertErrorReponse<T>(result: RequestResult<T>) -> RequestErrorType! {
+func AfterShipAssertErrorReponse<T>(result: RequestResult<T>) -> RequestErrorType! {
 	switch result {
 	case .Error(let errorType):
 		return errorType;

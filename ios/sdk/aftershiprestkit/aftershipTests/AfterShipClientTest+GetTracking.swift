@@ -1,5 +1,5 @@
 //
-//  AftershipClientTest+GetTracking.swift
+//  AfterShipClientTest+GetTracking.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 17/07/16.
@@ -9,14 +9,14 @@
 import XCTest
 import AfterShipRestKit
 
-class AftershipClientTest_GetTracking: XCTestCase {
-	var client: AftershipClient!;
+class AfterShipClientTest_GetTracking: XCTestCase {
+	var client: AfterShipClient!;
 	var agent: MockRequestAgent!;
 	
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
 	}
 	
 	override func tearDown() {
@@ -46,7 +46,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		parameters?.responseLanguage = "en";
 		
 		client.getTracking(parameters: parameters!) { (result) in
-			AftershipAssertSuccessResponse(result);
+			AfterShipAssertSuccessResponse(result);
 			let lastRequest = self.agent.lastUrlRequest!;
 			let url = lastRequest.URL!.absoluteString;
 			XCTAssertTrue(url.containsString("https://api.aftership.com/v4"), "Check against the basic things as well");
@@ -67,7 +67,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		let parameters = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
 		
 		client.getTracking(parameters: parameters!) { (result) in
-			AftershipAssertSuccessResponse(result);
+			AfterShipAssertSuccessResponse(result);
 			let lastRequest = self.agent.lastUrlRequest!;
 			let url = lastRequest.URL!.absoluteString;
 			XCTAssertTrue(url.containsString("/trackings/123456"));
@@ -80,7 +80,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		let requestExpectation = expectationWithDescription("Get Tracking with number and slug");
 		
 		self.client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
-			let response = AftershipAssertSuccessResponse(result).tracking!;
+			let response = AfterShipAssertSuccessResponse(result).tracking!;
 			XCTAssertNotNil(response);
 			
 			XCTAssertEqual(response.id, "A1B2C3D4", "Make sure the Tracking model is not garbage");
@@ -141,7 +141,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 	func testGetTrackingWithEmptyTrackingNumber() {
 		let emptyTrackingNumberExpectation = expectationWithDescription("Get Tracking with empty tracking number");
 		self.client.getTracking(trackingNumber: "", slug: "Foo") { (result) in
-			let error = AftershipAssertErrorReponse(result);
+			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertNotNil(error);
 			emptyTrackingNumberExpectation.fulfill();
 		}
@@ -150,7 +150,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		
 		let emptySlugExpectation = expectationWithDescription("Get Tracking with empty slug");
 		self.client.getTracking(trackingNumber: "123456", slug: "") { (result) in
-			let error = AftershipAssertErrorReponse(result);
+			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(error, RequestErrorType.MalformedRequest);
 			emptySlugExpectation.fulfill();
 		}
@@ -164,7 +164,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		let requestExpectation = expectationWithDescription("Get Tracking with non-json response");
 		
 		client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
-			let error = AftershipAssertErrorReponse(result);
+			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(error, RequestErrorType.InvalidJsonData);
 			requestExpectation.fulfill();
 		}
@@ -186,7 +186,7 @@ class AftershipClientTest_GetTracking: XCTestCase {
 		];
 		agent.data = try! NSJSONSerialization.dataWithJSONObject(getTrackingsJson, options: .PrettyPrinted);
 		client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
-			let response = AftershipAssertSuccessResponse(result).tracking;
+			let response = AfterShipAssertSuccessResponse(result).tracking;
 			XCTAssertNil(response, "Can't make sense of the response, may be the developer will");
 			requestExpectation.fulfill();
 		}

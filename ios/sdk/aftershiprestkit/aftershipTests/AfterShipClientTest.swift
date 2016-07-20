@@ -1,5 +1,5 @@
 //
-//  AftershipClientTest.swift
+//  AfterShipClientTest.swift
 //  aftership
 //
 //  Created by Kwun Ho Chan on 15/07/16.
@@ -10,14 +10,14 @@ import XCTest
 import Foundation
 @testable import AfterShipRestKit
 
-class AftershipClientTest: XCTestCase {
-	var client: AftershipClient!;
+class AfterShipClientTest: XCTestCase {
+	var client: AfterShipClient!;
 	var agent: MockRequestAgent!;
 	
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AftershipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
 	}
 	
 	override func tearDown() {
@@ -26,7 +26,7 @@ class AftershipClientTest: XCTestCase {
 	}
 	
 	func testInitialize() {
-		XCTAssertNil(AftershipClient(apiKey: ""), "API key should not be empty string");
+		XCTAssertNil(AfterShipClient(apiKey: ""), "API key should not be empty string");
 	}
 	
 	func testRequestHeaderValues() {
@@ -92,7 +92,7 @@ class AftershipClientTest: XCTestCase {
 	}
 }
 
-extension AftershipClient {
+extension AfterShipClient {
 	public func performMockRequest(completionHandler: RequestAgentCompletionHandler) {
 		let urlComponents = self.createUrlComponents("/foo");
 		guard let url = urlComponents.URL else {
