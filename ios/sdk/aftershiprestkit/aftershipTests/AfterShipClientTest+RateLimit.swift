@@ -16,7 +16,7 @@ class AfterShipClientTest_RateLimit: XCTestCase {
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent);
 	}
 	
 	override func tearDown() {

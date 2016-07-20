@@ -16,7 +16,7 @@ class AfterShipClientTest_CreateTracking: XCTestCase {
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent(fileName: "Demo_CreateTracking_Response_Body");
-		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent);
 	}
 	
 	override func tearDown() {

@@ -47,6 +47,10 @@
 		121303DB1D3E756000C0EE93 /* AfterShipClient+GetTrackings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD931D38F954000CD05E /* AfterShipClient+GetTrackings.swift */; };
 		121303DC1D3E756000C0EE93 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121303C61D3E4B4200C0EE93 /* Json.swift */; };
 		121303DF1D3E756000C0EE93 /* aftership.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D561FF1D379083006C1399 /* aftership.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		121304F81D3F95E300C0EE93 /* NSBundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121304F71D3F95E300C0EE93 /* NSBundle+Extension.swift */; };
+		121304FA1D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121304F91D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift */; };
+		121304FB1D3F9BC100C0EE93 /* NSBundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121304F71D3F95E300C0EE93 /* NSBundle+Extension.swift */; };
+		121304FC1D3F9BC100C0EE93 /* NSDateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121304F91D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift */; };
 		122ECD7B1D38D4C6000CD05E /* AfterShipClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7A1D38D4C6000CD05E /* AfterShipClientTest.swift */; };
 		122ECD801D38E563000CD05E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD7F1D38E563000CD05E /* String+Extension.swift */; };
 		122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */; };
@@ -99,6 +103,8 @@
 		121303C91D3E4EC000C0EE93 /* TrackingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingTest.swift; sourceTree = "<group>"; };
 		121303E41D3E756000C0EE93 /* AfterShipRestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AfterShipRestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		121303E51D3E756000C0EE93 /* aftershiprestkitwatchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = aftershiprestkitwatchOS.plist; sourceTree = "<group>"; };
+		121304F71D3F95E300C0EE93 /* NSBundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+Extension.swift"; sourceTree = "<group>"; };
+		121304F91D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		122ECD7A1D38D4C6000CD05E /* AfterShipClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AfterShipClientTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		122ECD7F1D38E563000CD05E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -188,9 +194,11 @@
 		122ECD7E1D38E53B000CD05E /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				122ECD7F1D38E563000CD05E /* String+Extension.swift */,
-				122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */,
+				121304F71D3F95E300C0EE93 /* NSBundle+Extension.swift */,
+				121304F91D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift */,
 				122ECD831D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift */,
+				122ECD811D38E5B4000CD05E /* NSURLComponents+Extension.swift */,
+				122ECD7F1D38E563000CD05E /* String+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -199,10 +207,10 @@
 			isa = PBXGroup;
 			children = (
 				122ECD881D38E87D000CD05E /* Checkpoint.swift */,
+				121303901D3B96AB00C0EE93 /* Metadata.swift */,
+				122ECD991D39E385000CD05E /* Response.swift */,
 				122ECD891D38E87D000CD05E /* Tracking.swift */,
 				122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */,
-				122ECD991D39E385000CD05E /* Response.swift */,
-				121303901D3B96AB00C0EE93 /* Metadata.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121304FB1D3F9BC100C0EE93 /* NSBundle+Extension.swift in Sources */,
 				121303CD1D3E756000C0EE93 /* AfterShipClient+CreateTrackings.swift in Sources */,
 				121303CE1D3E756000C0EE93 /* NSURLComponents+Extension.swift in Sources */,
 				121303CF1D3E756000C0EE93 /* RequestAgent.swift in Sources */,
@@ -439,6 +448,7 @@
 				121303D81D3E756000C0EE93 /* Tracking.swift in Sources */,
 				121303D91D3E756000C0EE93 /* RateLimit.swift in Sources */,
 				121303DA1D3E756000C0EE93 /* NSMutableURLRequest+Extension.swift in Sources */,
+				121304FC1D3F9BC100C0EE93 /* NSDateFormatter+Extension.swift in Sources */,
 				121303DB1D3E756000C0EE93 /* AfterShipClient+GetTrackings.swift in Sources */,
 				121303DC1D3E756000C0EE93 /* Json.swift in Sources */,
 			);
@@ -448,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121304F81D3F95E300C0EE93 /* NSBundle+Extension.swift in Sources */,
 				1213038F1D3B92DB00C0EE93 /* AfterShipClient+CreateTrackings.swift in Sources */,
 				122ECD821D38E5B4000CD05E /* NSURLComponents+Extension.swift in Sources */,
 				121303BF1D3D128300C0EE93 /* RequestAgent.swift in Sources */,
@@ -462,6 +473,7 @@
 				122ECD8C1D38E87D000CD05E /* Tracking.swift in Sources */,
 				121303C41D3D1F6700C0EE93 /* RateLimit.swift in Sources */,
 				122ECD841D38E5D4000CD05E /* NSMutableURLRequest+Extension.swift in Sources */,
+				121304FA1D3F9AEB00C0EE93 /* NSDateFormatter+Extension.swift in Sources */,
 				122ECD941D38F954000CD05E /* AfterShipClient+GetTrackings.swift in Sources */,
 				121303C81D3E4BB200C0EE93 /* Json.swift in Sources */,
 			);

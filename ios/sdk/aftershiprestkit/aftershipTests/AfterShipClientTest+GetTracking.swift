@@ -16,7 +16,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent);
 	}
 	
 	override func tearDown() {
@@ -79,7 +79,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	func testGetTrackingBySlugAndTrackingNumber() {
 		let requestExpectation = expectationWithDescription("Get Tracking with number and slug");
 		
-		self.client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
+		self.client.getTracking(slug: "Foo", trackingNumber: "123456") { (result) in
 			let response = AfterShipAssertSuccessResponse(result).tracking!;
 			XCTAssertNotNil(response);
 			
@@ -89,7 +89,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 			//				self.compareDate(response.lastUpdatedAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 17));
 			//				XCTAssertEqual(response.trackingNumber, "012345678901");
 			XCTAssertEqual(response.slug, "express");
-			XCTAssertEqual(response.active, false);
+			XCTAssertEqual(response.isActive, false);
 			XCTAssertNil(response.pushNotificationAndroidIds, "Empty array should return nil");
 			XCTAssertNil(response.customFields);
 			XCTAssertNil(response.customerName);
@@ -140,7 +140,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	
 	func testGetTrackingWithEmptyTrackingNumber() {
 		let emptyTrackingNumberExpectation = expectationWithDescription("Get Tracking with empty tracking number");
-		self.client.getTracking(trackingNumber: "", slug: "Foo") { (result) in
+		self.client.getTracking(slug: "Foo", trackingNumber: "") { (result) in
 			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertNotNil(error);
 			emptyTrackingNumberExpectation.fulfill();
@@ -149,7 +149,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 		self.waitForExpectationsWithTimeout(1, handler: nil);
 		
 		let emptySlugExpectation = expectationWithDescription("Get Tracking with empty slug");
-		self.client.getTracking(trackingNumber: "123456", slug: "") { (result) in
+		self.client.getTracking(slug: "", trackingNumber: "123456") { (result) in
 			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(error, RequestErrorType.MalformedRequest);
 			emptySlugExpectation.fulfill();
@@ -163,7 +163,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 		
 		let requestExpectation = expectationWithDescription("Get Tracking with non-json response");
 		
-		client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
+		client.getTracking(slug: "Foo", trackingNumber: "123456") { (result) in
 			let error = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(error, RequestErrorType.InvalidJsonData);
 			requestExpectation.fulfill();
@@ -185,7 +185,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 			]
 		];
 		agent.data = try! NSJSONSerialization.dataWithJSONObject(getTrackingsJson, options: .PrettyPrinted);
-		client.getTracking(trackingNumber: "123456", slug: "Foo") { (result) in
+		client.getTracking(slug: "Foo", trackingNumber: "123456") { (result) in
 			let response = AfterShipAssertSuccessResponse(result).tracking;
 			XCTAssertNil(response, "Can't make sense of the response, may be the developer will");
 			requestExpectation.fulfill();

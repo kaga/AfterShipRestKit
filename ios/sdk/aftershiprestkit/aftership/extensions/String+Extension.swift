@@ -25,12 +25,3 @@ extension String {
 	}
 }
 
-extension NSDate {
-	var isoString: String {
-		let dateFormatter = NSDateFormatter();
-		dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX");
-		dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT");
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
-		return dateFormatter.stringFromDate(self);
-	}
-}

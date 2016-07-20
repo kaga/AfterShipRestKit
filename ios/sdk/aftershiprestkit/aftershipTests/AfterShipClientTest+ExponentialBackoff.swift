@@ -13,7 +13,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 	
 	func testGetNumberOfRetriesSinceServiceUnavailable() {
 		let agent = MockRequestAgent();
-		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent)!;
 		XCTAssertEqual(client.numberOfRetriesSinceServiceUnavailable, 0, "Should be 0 because never make a request yet");
 		
 		client._numberOfRetriesSinceServiceUnavailable = (10, NSDate(timeIntervalSinceNow: -61));
@@ -27,7 +27,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 		let expectation = expectationWithDescription("Request to service some time later");
 		
 		let agent = MockRequestAgent();
-		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent)!;
 		
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;
@@ -51,7 +51,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 		let expectation = expectationWithDescription("Service Error");
 		
 		let agent = ErrorRequestAgent();
-		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent)!;
 		
 		XCTAssertNil(client._numberOfRetriesSinceServiceUnavailable, "Initialial state check");
 		client.performMockRequest{ (result) in
@@ -78,7 +78,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 		
 		let agent = ErrorRequestAgent();
 		agent.errorType = errorType;
-		let client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent)!;
+		let client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent)!;
 		
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;

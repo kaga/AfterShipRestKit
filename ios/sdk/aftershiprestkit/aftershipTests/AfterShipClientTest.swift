@@ -17,7 +17,7 @@ class AfterShipClientTest: XCTestCase {
 	override func setUp() {
 		super.setUp();
 		agent = MockRequestAgent();
-		self.client = AfterShipClient(apiKey: "AfterShipApiKey", urlSession: agent);
+		self.client = AfterShipClient(apiKey: "AfterShipApiKey", requestAgent: agent);
 	}
 	
 	override func tearDown() {
@@ -100,7 +100,7 @@ extension AfterShipClient {
 			return;
 		}
 		let request = self.createUrlRequest(aftershipUrl: url, httpMethod: "GET");
-		self.performRequest(request: request, completionHandler: completionHandler);
+		self.perform(request: request, completionHandler: completionHandler);
 	}
 }
 

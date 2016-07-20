@@ -79,12 +79,12 @@ class TrackingTest: XCTestCase {
 		XCTAssertEqual(model.createdAt, NSDate(timeIntervalSince1970: 3));
 		XCTAssertEqual(model.updatedAt, NSDate(timeIntervalSince1970: 4));
 		XCTAssertEqual(model.trackingPostalCode, "5");
-		XCTAssertEqual(model.trackingShipDate, NSDate(timeIntervalSince1970: 6));
+		XCTAssertEqual(model.trackingShipDate, NSDate(timeIntervalSince1970: 0), "It stored in YYYYMMDD format therefore the second information is lost");
 		XCTAssertEqual(model.trackingAccountNumber, "7");
 		XCTAssertEqual(model.trackingKey, "8");
 		XCTAssertEqual(model.trackingDestinationCountry, "9");
 		XCTAssertEqual(model.slug, "10");
-		XCTAssertEqual(model.active, true);
+		XCTAssertEqual(model.isActive, true);
 		XCTAssertEqual(model.pushNotificationAndroidIds!.first!, "12");
 		XCTAssertEqual(model.pushNotificationIosIds!.first!, "13");
 		XCTAssertEqual(model.smsNotificationPhoneNumbers!.first!, "14");
@@ -108,5 +108,25 @@ class TrackingTest: XCTestCase {
 		XCTAssertEqual(model.trackedCount, 31);
 		XCTAssertNil(model.checkpoints);
 		XCTAssertEqual(model.customFields!["foo"] as? String, "bar");
+	}
+	
+	func testTrackingShipDate() {
+		var model = Tracking();
+		XCTAssertNil(model.trackingShipDate);
+		
+		model.trackingShipDate = NSDate(timeIntervalSince1970: 0);
+		
+		let trackingShipDateString = model.json[TrackingField.TrackingShipDate.rawValue] as? String;
+		XCTAssertEqual(trackingShipDateString, "19700101", "Expected to be YYYYMMDD format");				
+	}
+}
+
+extension NSDate {
+	var isoString: String {
+		let dateFormatter = NSDateFormatter();
+		dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX");
+		dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT");
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
+		return dateFormatter.stringFromDate(self);
 	}
 }

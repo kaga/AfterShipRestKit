@@ -116,11 +116,19 @@ public extension Tracking {
 	
 	public var trackingShipDate: NSDate? {
 		get {
-			let dateString: String? = model.get(.TrackingShipDate);
-			return dateString?.dateValue;
+			guard let dateString: String = model.get(.TrackingShipDate) else {
+				return nil;
+			}
+			
+			let dateFormatter = NSDateFormatter.yyyymmddFormatter();
+			return dateFormatter.dateFromString(dateString);
 		}
 		set(newValue) {
-			model.set(.TrackingShipDate, newValue: newValue?.isoString);
+			let dateFormatter = NSDateFormatter.yyyymmddFormatter();
+			if let date = newValue {
+				let formattedString = dateFormatter.stringFromDate(date)
+				model.set(.TrackingShipDate, newValue: formattedString);
+			}
 		}
 	}
 	
@@ -160,7 +168,7 @@ public extension Tracking {
 		}
 	}
 	
-	public var active: Bool? {
+	public var isActive: Bool? {
 		get {
 			return model.get(.Active);
 		}

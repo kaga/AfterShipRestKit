@@ -10,20 +10,23 @@ import Foundation
 
 extension AfterShipClient {
 	
+	/**
+
+	*/
+	public func createTracking(trackingNumber trackingNumber: String, completionHandler: RequestAgentCompletionHandler) {
+		let tracking = Tracking(json: [
+			"tracking_number": trackingNumber
+			]);
+		self.createTracking(tracking: tracking, completionHandler: completionHandler);
+	}
+	
 	public func createTracking(tracking model: Tracking, completionHandler: RequestAgentCompletionHandler) {
 		guard let request = self.createRequest(tracking: model) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;
 		}
 		
-		self.performRequest(request: request, completionHandler: completionHandler);
-	}
-	
-	public func createTracking(trackingNumber trackingNumber: String, completionHandler: RequestAgentCompletionHandler) {
-		let tracking = Tracking(json: [
-			"tracking_number": trackingNumber
-			]);
-		self.createTracking(tracking: tracking, completionHandler: completionHandler);
+		self.perform(request: request, completionHandler: completionHandler);
 	}
 	
 	private func createRequest(tracking model: Tracking) -> NSMutableURLRequest? {

@@ -12,11 +12,19 @@ public protocol RequestAgent {
 	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void;
 }
 
+/**
+	Possible result for performing a request. 
+	- important: It is recommanded to use *switch* statment without the default case to handle the control flow
+*/
 public enum RequestResult<T> {
 	case Success(response: T);
 	case Error(RequestErrorType);
 }
 
+/**
+	List of possible errors that a requset might return. The error might come externally from the REST API or
+	internally ( i.e. A MalformedRequest error will return immediately if a required fields is missing ).
+*/
 public enum RequestErrorType: String {
 	case MalformedRequest = "BadRequest";
 	case Unauthorized = "Unauthorized";
