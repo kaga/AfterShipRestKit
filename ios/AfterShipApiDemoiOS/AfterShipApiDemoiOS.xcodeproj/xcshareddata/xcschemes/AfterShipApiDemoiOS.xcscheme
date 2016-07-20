@@ -49,6 +49,16 @@
                ReferencedContainer = "container:AfterShipApiDemoiOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12D562051D379083006C1399"
+               BuildableName = "aftershiprestkitTests.xctest"
+               BlueprintName = "aftershiprestkitTests"
+               ReferencedContainer = "container:../sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
