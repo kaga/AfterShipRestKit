@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA.svg?branch=master)](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA)
+[![codecov](https://codecov.io/gh/kaga/CwwAAQ8BDgsBBwYEBAQKCA/branch/master/graph/badge.svg)](https://codecov.io/gh/kaga/CwwAAQ8BDgsBBwYEBAQKCA)
 
 ## Challenge
 

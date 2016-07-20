@@ -856,6 +856,7 @@
 				121304AD1D3F0BBD00C0EE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		121304AE1D3F0BBD00C0EE93 /* Build configuration list for PBXNativeTarget "AfterShipApiDemoiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -864,6 +865,7 @@
 				121304B01D3F0BBD00C0EE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		121304B11D3F0BBD00C0EE93 /* Build configuration list for PBXNativeTarget "AfterShipApiDemoiOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -872,6 +874,7 @@
 				121304B31D3F0BBD00C0EE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		121304E61D3F0BEE00C0EE93 /* Build configuration list for PBXNativeTarget "AfterShipApiDemoWatchOS Extension" */ = {
 			isa = XCConfigurationList;
@@ -880,6 +883,7 @@
 				121304E81D3F0BEE00C0EE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		121304EA1D3F0BEE00C0EE93 /* Build configuration list for PBXNativeTarget "AfterShipApiDemoWatchOS" */ = {
 			isa = XCConfigurationList;
@@ -888,6 +892,7 @@
 				121304EC1D3F0BEE00C0EE93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
