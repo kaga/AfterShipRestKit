@@ -8,42 +8,56 @@
 
 import Foundation
 
+/**
+	The Response struct provides root properties of AfterShip API response.
+
+	- seealso: [envelope section](https://www.aftership.com/docs/api/4/overview)
+	- notes: The response object initialized with metadata and data object unwrapped
+*/
 public struct Response {
-	public var json: [String: AnyObject];
-	public var metadata: Metadata;
-	public var data: [String: AnyObject];
-	public var rateLimit: RateLimit?;
+	/**
+		The raw values of the response body that returned from AfterShip REST API. (read-only)
+	*/
+	public let json: [String: AnyObject];
 	
-	init?(json: [String: AnyObject], rateLimit: RateLimit? = nil) {
-		self.json = json;
-		
-		guard let metadataJson = json["meta"] as? [String: AnyObject],
-		let dataJson = json["data"] as? [String: AnyObject] else {
-			return nil;
-		}
-		self.metadata = Metadata(json: metadataJson);
-		self.data = dataJson;
-		self.rateLimit = rateLimit;
-	}
+	/**
+		Extra information about the response.
+	*/
+	public let metadata: Metadata;
+	
+	/**
+		The Data object of the json body.
+	*/
+	public let data: [String: AnyObject];
 }
 
 public extension Response {
 	public var tracking: Tracking? {
-		guard let dataJson = json["data"] as? [String: AnyObject],
-			let trackingJson = dataJson["tracking"] as? [String: AnyObject] else {
-				return nil;
+		guard let trackingJson = data["tracking"] as? [String: AnyObject] else {
+			return nil;
 		}
 		return Tracking(json: trackingJson);
 	}
 }
 
 extension Response {
-	init?(jsonData: NSData?, rateLimit: RateLimit? = nil) {
+	init?(jsonData: NSData?) {
 		guard let data = jsonData,
 			let jsonUnwrapped = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject],
 			let json = jsonUnwrapped else {
 				return nil;
 		}
-		self.init(json: json, rateLimit: rateLimit);
+		self.init(json: json);
 	}
+	
+	init?(json: [String: AnyObject]) {
+		self.json = json;
+		
+		guard let metadataJson = json["meta"] as? [String: AnyObject],
+			let dataJson = json["data"] as? [String: AnyObject] else {
+				return nil;
+		}
+		self.metadata = Metadata(json: metadataJson);
+		self.data = dataJson;
+	}	
 }

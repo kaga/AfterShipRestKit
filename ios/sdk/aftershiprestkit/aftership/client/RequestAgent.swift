@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol RequestAgent {
-	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void;
+	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void
 }
 
 /**
@@ -33,22 +33,42 @@ public enum RequestErrorType: String {
 	case TooManyRequests = "TooManyRequests";
 	case ServiceInternalError = "InternalError";
 	case InvalidJsonData;
+	case UnsupportedType;
 	//TODO more refine error type
 }
 
 public typealias RequestAgentCompletionHandler = (result: RequestResult<Response>) -> Void;
 
 extension NSURLSession: RequestAgent {
-	public func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>) -> Void) -> Void {
+	public func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void {
 		let task = self.dataTaskWithRequest(request) { (data, response, error) in
-			guard let response = response as? NSHTTPURLResponse,
-				let envelope = Response(jsonData: data, rateLimit: response.rateLimit) else {
-				completionHandler(result: .Error(.InvalidJsonData));
-				return;
-			}
-			completionHandler(result: .Success(response: envelope));
+			let (result, rateLimit) = self.processResponse(data, response: response, error: error);
+			completionHandler(result: result, rateLimit: rateLimit);
 		}
 		task.resume();
+	}
+	
+	func processResponse(data: NSData?, response: NSURLResponse?, error: NSError?) -> (result: RequestResult<Response>, rateLimit: RateLimit?) {
+		guard let response = response as? NSHTTPURLResponse else {
+			return (result: .Error(.UnsupportedType), rateLimit: nil)
+		}
+		
+		if let envelope = Response(jsonData: data) {
+			if let errorType = envelope.metadata.type {
+				return (result: .Error(errorType), rateLimit: response.rateLimit);
+			} else {
+				return (result: .Success(response: envelope), rateLimit: response.rateLimit)
+			}
+		} else {
+			switch response.statusCode {
+			case 200...299:
+				return (result: .Error(.InvalidJsonData), rateLimit: response.rateLimit);
+			case 400...404:
+				return (result: .Error(.MalformedRequest), rateLimit: response.rateLimit);
+			default:
+				return (result: .Error(.ServiceInternalError), rateLimit: response.rateLimit);
+			}
+		}
 	}
 }
 

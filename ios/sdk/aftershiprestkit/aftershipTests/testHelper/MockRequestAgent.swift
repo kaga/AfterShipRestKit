@@ -18,13 +18,13 @@ class MockRequestAgent: RequestAgent {
 		self.data = NSData(contentsOfURL: url!)!;
 	}
 	
-	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void {
+	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void {
 		self.lastUrlRequest = request;
-	
-		guard let response = Response(jsonData: data, rateLimit: RateLimit(resetDate: NSDate(timeIntervalSinceNow: 60), remaining: 599, limit: 600)) else {
-			completionHandler(result: .Error(.InvalidJsonData));
+		let rateLimit = RateLimit(resetDate: NSDate(timeIntervalSinceNow: 60), remaining: 599, limit: 600);
+		guard let response = Response(jsonData: data) else {
+			completionHandler(result: .Error(.InvalidJsonData), rateLimit: rateLimit);
 			return;
 		}
-		completionHandler(result: .Success(response: response));
+		completionHandler(result: .Success(response: response), rateLimit: rateLimit);
 	}
 }

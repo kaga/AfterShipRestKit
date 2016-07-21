@@ -68,8 +68,8 @@ public class AfterShipClient {
 		let sleepTimeInSeconds = sleepTimeGenerator.generateSleepTime(self.numberOfRetriesSinceServiceUnavailable);
 		delay(sleepTimeInSeconds) {
 			request.setAftershipHeaderFields(self.apiKey);
-			self.requestAgent.perform(request: request) { (result) in
-				self.updateRateLimitInfo(result);
+			self.requestAgent.perform(request: request) { (result, rateLimit) in
+				self.updateRateLimitInfo(rateLimit);
 				self.updateNumberOfRetriesCount(result);
 				completionHandler(result: result);
 			}
@@ -106,15 +106,8 @@ public class AfterShipClient {
 		return request;
 	}
 	
-	private func updateRateLimitInfo(result: RequestResult<Response>) {
-		switch result {
-		case .Success(let response):
-			if let rateLimit = response.rateLimit {
-				_rateLimit = rateLimit;
-			}
-		default:
-			break;
-		}
+	private func updateRateLimitInfo(rateLimit: RateLimit?) {
+		_rateLimit = rateLimit;
 	}
 	
 	private func updateNumberOfRetriesCount(requestResult: RequestResult<Response>) {

@@ -9,22 +9,22 @@
 import XCTest
 @testable import AfterShipRestKit
 
-func AfterShipAssertSuccessResponse<T>(result: RequestResult<T>) -> T! {
+func AfterShipAssertSuccessResponse<T>(result: RequestResult<T>, _ message: String = "") -> T! {
 	switch result {
 	case .Success(let response):
 		return response;
 	default:
-		XCTFail();
+		XCTFail(message);
 	}
 	return nil;
 }
 
-func AfterShipAssertErrorReponse<T>(result: RequestResult<T>) -> RequestErrorType! {
+func AfterShipAssertErrorReponse<T>(result: RequestResult<T>, _ message: String = "") -> RequestErrorType! {
 	switch result {
 	case .Error(let errorType):
 		return errorType;
 	default:
-		XCTFail();
+		XCTFail(message);
 	}
 	return nil;
 }
