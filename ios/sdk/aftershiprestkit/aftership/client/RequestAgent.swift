@@ -8,8 +8,9 @@
 
 import Foundation
 
+public typealias RequestAgentCompletionHandler = (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void;
 public protocol RequestAgent {
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void
+	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void
 }
 
 /**
@@ -34,13 +35,10 @@ public enum RequestErrorType: String {
 	case ServiceInternalError = "InternalError";
 	case InvalidJsonData;
 	case UnsupportedType;
-	//TODO more refine error type
 }
 
-public typealias RequestAgentCompletionHandler = (result: RequestResult<Response>) -> Void;
-
 extension NSURLSession: RequestAgent {
-	public func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void {
+	public func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void {
 		let task = self.dataTaskWithRequest(request) { (data, response, error) in
 			let (result, rateLimit) = self.processResponse(data, response: response, error: error);
 			completionHandler(result: result, rateLimit: rateLimit);

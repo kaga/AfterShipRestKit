@@ -12,7 +12,7 @@ import Foundation
 class ErrorRequestAgent: RequestAgent {
 	var errorType: RequestErrorType = .ServiceInternalError;
 	
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void {
+	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void {
 		let rateLimit = RateLimit(resetDate: NSDate(timeIntervalSinceNow: 60), remaining: 599, limit: 600);
 		completionHandler(result: .Error(errorType), rateLimit: rateLimit);
 	}

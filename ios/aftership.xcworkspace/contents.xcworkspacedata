@@ -7,7 +7,4 @@
    <FileRef
       location = "group:sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:AftershipApiDemo.playground">
-   </FileRef>
 </Workspace>

@@ -11,16 +11,28 @@ import Foundation
 extension AfterShipClient {
 	
 	/**
-
+	A convenient method to call createTracking
+	
+	- parameters:
+		- trackingNumber: identifier for the tracking. This property should not be empty.
 	*/
-	public func createTracking(trackingNumber trackingNumber: String, completionHandler: RequestAgentCompletionHandler) {
+	public func createTracking(trackingNumber trackingNumber: String, completionHandler: PerformRequestCompletionHandler) {
 		let tracking = Tracking(json: [
 			"tracking_number": trackingNumber
 			]);
 		self.createTracking(tracking: tracking, completionHandler: completionHandler);
 	}
 	
-	public func createTracking(tracking model: Tracking, completionHandler: RequestAgentCompletionHandler) {
+	/**
+	Create tracking results of a single tracking.
+	
+	- parameters:
+		- tracking: Tracking info to be created.
+		- completionHander: The completion handler to call with RequestResult
+	
+	It performs a POST /trackings request to the service.
+	*/
+	public func createTracking(tracking model: Tracking, completionHandler: PerformRequestCompletionHandler) {
 		guard let request = self.createRequest(tracking: model) else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));
 			return;

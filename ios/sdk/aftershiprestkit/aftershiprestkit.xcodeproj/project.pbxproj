@@ -66,6 +66,8 @@
 		12BD1DFD1D3B4441002B3C6E /* AfterShipClientTest+GetTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD1DFC1D3B4441002B3C6E /* AfterShipClientTest+GetTracking.swift */; };
 		12D562001D379083006C1399 /* aftership.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D561FF1D379083006C1399 /* aftership.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12D562071D379083006C1399 /* AfterShipRestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D561FC1D379083006C1399 /* AfterShipRestKit.framework */; };
+		12D6A9861D40826F004E20CC /* TrackingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6A9851D40826F004E20CC /* TrackingField.swift */; };
+		12D6A9871D40826F004E20CC /* TrackingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6A9851D40826F004E20CC /* TrackingField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +99,7 @@
 		121303B71D3D0DCE00C0EE93 /* ErrorRequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ErrorRequestAgent.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		121303B91D3D0DE200C0EE93 /* MockRequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MockRequestAgent.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		121303BB1D3D0EAF00C0EE93 /* AfterShipAssert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AfterShipAssert.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		121303BD1D3D125000C0EE93 /* RequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAgent.swift; sourceTree = "<group>"; };
+		121303BD1D3D125000C0EE93 /* RequestAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RequestAgent.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		121303C01D3D1F3B00C0EE93 /* RateLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateLimit.swift; sourceTree = "<group>"; };
 		121303C21D3D1F5000C0EE93 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		121303C61D3E4B4200C0EE93 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		12D562011D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12D562061D379083006C1399 /* aftershiprestkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aftershiprestkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D5620D1D379083006C1399 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D6A9851D40826F004E20CC /* TrackingField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,7 @@
 				121303901D3B96AB00C0EE93 /* Metadata.swift */,
 				122ECD991D39E385000CD05E /* Response.swift */,
 				122ECD891D38E87D000CD05E /* Tracking.swift */,
+				12D6A9851D40826F004E20CC /* TrackingField.swift */,
 				122ECD8A1D38E87D000CD05E /* TrackingStatus.swift */,
 			);
 			path = model;
@@ -447,6 +451,7 @@
 				121303D41D3E756000C0EE93 /* Response.swift in Sources */,
 				121303D51D3E756000C0EE93 /* AfterShipClient.swift in Sources */,
 				121303D61D3E756000C0EE93 /* Delay.swift in Sources */,
+				12D6A9871D40826F004E20CC /* TrackingField.swift in Sources */,
 				121303D71D3E756000C0EE93 /* Metadata.swift in Sources */,
 				121303D81D3E756000C0EE93 /* Tracking.swift in Sources */,
 				121303D91D3E756000C0EE93 /* RateLimit.swift in Sources */,
@@ -472,6 +477,7 @@
 				122ECD9A1D39E385000CD05E /* Response.swift in Sources */,
 				122ECD911D38F8F3000CD05E /* AfterShipClient.swift in Sources */,
 				121303C51D3D1F6700C0EE93 /* Delay.swift in Sources */,
+				12D6A9861D40826F004E20CC /* TrackingField.swift in Sources */,
 				121303911D3B96AB00C0EE93 /* Metadata.swift in Sources */,
 				122ECD8C1D38E87D000CD05E /* Tracking.swift in Sources */,
 				121303C41D3D1F6700C0EE93 /* RateLimit.swift in Sources */,

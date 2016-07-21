@@ -93,7 +93,7 @@ class AfterShipClientTest: XCTestCase {
 }
 
 extension AfterShipClient {
-	public func performMockRequest(completionHandler: RequestAgentCompletionHandler) {
+	public func performMockRequest(completionHandler: PerformRequestCompletionHandler) {
 		let urlComponents = self.createUrlComponents("/foo");
 		guard let url = urlComponents.URL else {
 			completionHandler(result: RequestResult.Error(.MalformedRequest));

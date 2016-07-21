@@ -32,7 +32,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;
 		
-		let completionHandler: RequestAgentCompletionHandler = { (result) in
+		let completionHandler: PerformRequestCompletionHandler = { (result) in
 			AfterShipAssertSuccessResponse(result);
 			requestDuration = NSDate().timeIntervalSinceDate(testStartTime);
 			expectation.fulfill();
@@ -83,7 +83,7 @@ class AfterShipClientTest_ExponentialBackoff: XCTestCase {
 		let testStartTime = NSDate();
 		var requestDuration: NSTimeInterval = 0;
 		
-		let completionHandler: RequestAgentCompletionHandler = { (result) in
+		let completionHandler: PerformRequestCompletionHandler = { (result) in
 			let responseErrorType = AfterShipAssertErrorReponse(result);
 			XCTAssertEqual(responseErrorType, errorType);
 			requestDuration = NSDate().timeIntervalSinceDate(testStartTime);

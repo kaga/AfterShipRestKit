@@ -18,7 +18,7 @@ class MockRequestAgent: RequestAgent {
 		self.data = NSData(contentsOfURL: url!)!;
 	}
 	
-	func perform(request request: NSURLRequest, completionHandler: (result: RequestResult<Response>, rateLimit: RateLimit?) -> Void) -> Void {
+	func perform(request request: NSURLRequest, completionHandler: RequestAgentCompletionHandler) -> Void {
 		self.lastUrlRequest = request;
 		let rateLimit = RateLimit(resetDate: NSDate(timeIntervalSinceNow: 60), remaining: 599, limit: 600);
 		guard let response = Response(jsonData: data) else {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias PerformRequestCompletionHandler = (result: RequestResult<Response>) -> Void;
+
 public class AfterShipClient {
 	public var apiHost: String = "api.aftership.com";
 	public let apiVersion: Int = 4;
@@ -22,8 +24,9 @@ public class AfterShipClient {
 	var _rateLimit: RateLimit? = nil;
 	
 	/**
-		Interacts with the AfterShip REST API
+		Interacts with the AfterShip REST API.
 
+		- returns: A Client ready to use or nil if the apiKey is empty.
 		- parameters:
 			- apiKey: The API Key from [AfterShip](https://www.aftership.com/apps/api). Cannot be empty.
 			- requestAgent: object that perform the network request. Defaults to NSURLSession.sharedSession()
@@ -41,25 +44,24 @@ public class AfterShipClient {
 	}
 	
 	/**
-		[Perform Request Method]
 		Perform request to the API service. 
 	
-		- parameter
+		- parameters:
 			- request: request to be made. Header fields that the API requires will be configure by the client
 			(e.g. API Key )
 			- completionHandler: callback for the response
 	
-		It will check if there is any request quota left, or TooManyRequest error will be returned.
+		The method will check if there is any request quota left, or TooManyRequest error will be returned.
 	
 		If there is a quota available but the service previously return 429 or 500 errors, a delay will be applied 
 		before performing the request. The delay time will be calculated using exponential backoff with jitter.
 	
 		The exponential backoff effect will be reset after inactivity for some time or sevice returned successful response.
 	
-		- important: When extending this client to support more REST API endpoints. It is important to call this method to
-			perform the network request.
+		- important: When extending this client to support more REST API endpoints. It is required to call this method to
+			perform the request.
 	*/
-	public func perform(request request: NSMutableURLRequest, completionHandler: RequestAgentCompletionHandler) {
+	public func perform(request request: NSMutableURLRequest, completionHandler: PerformRequestCompletionHandler) {
 		if let rateLimit = self.rateLimit where (rateLimit.remaining == 0) {
 			completionHandler(result: RequestResult.Error(.TooManyRequests));
 			return;
@@ -79,10 +81,9 @@ public class AfterShipClient {
 	/**
 		Helper method for creating a NSURLComponents.
 	
-		- return
-		A NSURLComponents with host and path prefilled
+		- returns: A NSURLComponents with host and path prefilled
 		
-		- parameter
+		- parameters:
 			- path: Path of the url component.
 	
 		Example generated url - https://api.aftership.com/v4/path
@@ -95,9 +96,7 @@ public class AfterShipClient {
 	/**
 		Helper method for creating a NSMutableURLRequest.
 		
-		- return
-		A NSMutableURLRequest with url, method and required header fields configured
-	
+		- returns: A NSMutableURLRequest with url, method and required header fields configured
 	*/
 	public func createUrlRequest(aftershipUrl url: NSURL, httpMethod: String) -> NSMutableURLRequest {
 		let request = NSMutableURLRequest();
@@ -131,8 +130,7 @@ public extension AfterShipClient {
 	/**
 		Last known Rate Limit information
 	
-		- return 
-			return nil if the information is expired or not avaiable
+		- returns: a RateLimit object or nil if the information is expired or not avaiable
 	
 		The information is retrived from header fields of the last response.
 	*/
@@ -145,8 +143,6 @@ public extension AfterShipClient {
 	
 	/**
 		Count requests that had made since the API service is unavailable.
-	
-		- seealso: [Perform Request Method]
 	*/
 	public var numberOfRetriesSinceServiceUnavailable: Int {
 		guard let retryRecord = self._numberOfRetriesSinceServiceUnavailable
