@@ -131,42 +131,6 @@ public extension Tracking {
 		}
 	}
 	
-	public var pushNotificationAndroidIds: [String]? {
-		get {
-			return model.getArray(.PushNotificationAndroidIds);
-		}
-		set(newValue) {
-			model.set(.PushNotificationAndroidIds, newValue: newValue);
-		}
-	}
-	
-	public var pushNotificationIosIds: [String]? {
-		get {
-			return model.getArray(.PushNotificationIosIds);
-		}
-		set(newValue) {
-			model.set(.PushNotificationIosIds, newValue: newValue);
-		}
-	}
-	
-	public var smsNotificationPhoneNumbers: [String]? {
-		get {
-			return model.getArray(.SmsNotificationPhoneNumbers);
-		}
-		set(newValue) {
-			model.set(.SmsNotificationPhoneNumbers, newValue: newValue);
-		}
-	}
-	
-	public var emails: [String]? {
-		get {
-			return model.getArray(.Emails);
-		}
-		set(newValue) {
-			model.set(.Emails, newValue: newValue);
-		}
-	}
-	
 	public var customFields: [String: AnyObject]? {
 		get {
 			return model.get(.CustomFields);
@@ -237,30 +201,6 @@ public extension Tracking {
 		}
 	}
 	
-	public var shipmentPackageCount: Int? {
-		get {
-			return model.get(.ShipmentPackageCount);
-		}
-	}
-	
-	public var shipmentType: String? {
-		get {
-			return model.get(.ShipmentType);
-		}
-	}
-	
-	public var shipmentWeight: Double? {
-		get {
-			return model.get(.ShipmentWeight);
-		}
-	}
-	
-	public var shipmentWeightUnit: String? {
-		get {
-			return model.get(.ShipmentWeightUnit);
-		}
-	}
-	
 	public var signedBy: String? {
 		get {
 			return model.get(.SignedBy);
@@ -302,6 +242,82 @@ public extension Tracking {
 		get {
 			let checkpointsJson: [[String: AnyObject]]? = model.get(.Checkpoints);
 			return checkpointsJson?.map(Checkpoint.init(json:));
+		}
+	}
+}
+
+//MARK: - Notifications 
+public extension Tracking {
+	public var pushNotificationAndroidIds: [String]? {
+		get {
+			return model.getArray(.PushNotificationAndroidIds);
+		}
+		set(newValue) {
+			model.set(.PushNotificationAndroidIds, newValue: newValue);
+		}
+	}
+	
+	public var pushNotificationIosIds: [String]? {
+		get {
+			return model.getArray(.PushNotificationIosIds);
+		}
+		set(newValue) {
+			model.set(.PushNotificationIosIds, newValue: newValue);
+		}
+	}
+	
+	public var smsNotificationPhoneNumbers: [String]? {
+		get {
+			return model.getArray(.SmsNotificationPhoneNumbers);
+		}
+		set(newValue) {
+			model.set(.SmsNotificationPhoneNumbers, newValue: newValue);
+		}
+	}
+	
+	public var emailNotification: [String]? {
+		get {
+			return model.getArray(.Emails);
+		}
+		set(newValue) {
+			model.set(.Emails, newValue: newValue);
+		}
+	}
+}
+
+//MARK: - Shipment
+public extension Tracking {
+	public var shipment: (type: String, weight: Double, unit: String, packageCount: Int)? {
+		guard let packageCount = shipmentPackageCount,
+			let type = shipmentType,
+			let weight = shipmentWeight,
+			let unit = shipmentWeightUnit else {
+				return nil;
+		}
+		return (type: type, weight: weight, unit: unit, packageCount: packageCount);
+	}
+	
+	var shipmentPackageCount: Int? {
+		get {
+			return model.get(.ShipmentPackageCount);
+		}
+	}
+	
+	var shipmentType: String? {
+		get {
+			return model.get(.ShipmentType);
+		}
+	}
+	
+	var shipmentWeight: Double? {
+		get {
+			return model.get(.ShipmentWeight);
+		}
+	}
+	
+	var shipmentWeightUnit: String? {
+		get {
+			return model.get(.ShipmentWeightUnit);
 		}
 	}
 }

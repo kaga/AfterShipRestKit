@@ -64,7 +64,7 @@ class TrackingTest: XCTestCase {
 		model.pushNotificationAndroidIds = ["12"];
 		model.pushNotificationIosIds = ["13"];
 		model.smsNotificationPhoneNumbers = ["14"];
-		model.emails = ["15"];
+		model.emailNotification = ["15"];
 		model.customerName = "16";
 		model.destinationCountryIsoCode = "18";
 		model.orderId = "20";
@@ -88,7 +88,7 @@ class TrackingTest: XCTestCase {
 		XCTAssertEqual(model.pushNotificationAndroidIds!.first!, "12");
 		XCTAssertEqual(model.pushNotificationIosIds!.first!, "13");
 		XCTAssertEqual(model.smsNotificationPhoneNumbers!.first!, "14");
-		XCTAssertEqual(model.emails!.first!, "15");
+		XCTAssertEqual(model.emailNotification!.first!, "15");
 		XCTAssertEqual(model.customerName, "16");
 		XCTAssertEqual(model.deliveryTimeInDay, 17);
 		XCTAssertEqual(model.destinationCountryIsoCode, "18");
@@ -108,6 +108,12 @@ class TrackingTest: XCTestCase {
 		XCTAssertEqual(model.trackedCount, 31);
 		XCTAssertNil(model.checkpoints);
 		XCTAssertEqual(model.customFields!["foo"] as? String, "bar");
+		
+		let (type, weight, unit, packageCount) = model.shipment!;
+		XCTAssertEqual(packageCount, 24);
+		XCTAssertEqual(type, "25");
+		XCTAssertEqual(weight, 26);
+		XCTAssertEqual(unit, "27");
 	}
 	
 	func testTrackingShipDate() {

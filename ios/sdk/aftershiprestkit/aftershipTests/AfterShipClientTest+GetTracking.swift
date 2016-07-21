@@ -96,8 +96,8 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 			XCTAssertEqual(response.deliveryTimeInDay, 6);
 			XCTAssertNil(response.destinationCountryIsoCode);
 			
-			XCTAssertEqual(response.emails?.count, 1, "one email notification entry");
-			let email = (response.emails?.first)!;
+			XCTAssertEqual(response.emailNotification?.count, 1, "one email notification entry");
+			let email = (response.emailNotification?.first)!;
 			XCTAssertEqual(email, "foo@bar.com");
 			
 			XCTAssertEqual(response.expectedDelivery, nil);
