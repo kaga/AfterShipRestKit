@@ -86,8 +86,6 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 			XCTAssertEqual(response.id, "A1B2C3D4", "Make sure the Tracking model is not garbage");
 			self.compareDate(response.createdAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 13));
 			self.compareDate(response.updatedAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 17));
-			//				self.compareDate(response.lastUpdatedAt!, expectedDateComponents: (2016, 7, 16, 14, 2, 17));
-			//				XCTAssertEqual(response.trackingNumber, "012345678901");
 			XCTAssertEqual(response.slug, "express");
 			XCTAssertEqual(response.isActive, false);
 			XCTAssertNil(response.pushNotificationAndroidIds, "Empty array should return nil");
@@ -102,12 +100,9 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 			
 			XCTAssertEqual(response.expectedDelivery, nil);
 			XCTAssertNil(response.pushNotificationIosIds, "Empty array should return nil");
-			//				XCTAssertEqual(response.note, nil);
 			XCTAssertEqual(response.orderId, "");
 			XCTAssertEqual(response.orderIdPath, "");
 			XCTAssertEqual(response.shipmentPackageCount, 1);
-			//				self.compareDate(response.shipmentPickupDate!, expectedDateComponents: (2016, 7, 16, 12, 39, 49));
-			//				self.compareDate(response.shipmentDeliveryDate!, expectedDateComponents: (2016, 7, 16, 12, 39, 49));
 			XCTAssertNil(response.shipmentType);
 			XCTAssertNil(response.shipmentWeight);
 			XCTAssertNil(response.shipmentWeightUnit);

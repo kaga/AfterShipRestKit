@@ -10,17 +10,7 @@ import XCTest
 @testable import AfterShipRestKit
 
 class TrackingTest: XCTestCase {
-	
-	override func setUp() {
-		super.setUp()
-		// Put setup code here. This method is called before the invocation of each test method in the class.
-	}
-	
-	override func tearDown() {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
-		super.tearDown()
-	}
-	
+
 	func testInitialize() {
 		XCTAssertNil(Tracking(trackingNumber: ""), "Should return nil for empty tracking number");
 		let model = Tracking(trackingNumber: "123456");

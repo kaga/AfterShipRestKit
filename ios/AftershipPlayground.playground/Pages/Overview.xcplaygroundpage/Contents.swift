@@ -1,6 +1,6 @@
 /*:
 
-## Table of Contents
+## AfterShipRestKit
 
 1. [Initialize the Client](Initialize)
 1. [Get a Single Tracking](GetTracking)

@@ -12,8 +12,6 @@ import XCTest
 class MetadataTest: XCTestCase {
 
     func testSuccessCode() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
 		let metadata = Metadata(json: [
 				"code": 200
 			]);

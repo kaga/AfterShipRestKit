@@ -44,5 +44,4 @@ let keys = result.keys.sort();
 for key in keys {
 	let value = result[key];
 	print("\(value) times that the request have to wait for \(key) seconds before performing ")
-	XCPlaygroundPage.currentPage.captureValue(value, withIdentifier: "Average delay time");
 }

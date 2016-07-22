@@ -13,7 +13,9 @@ public struct Checkpoint {
 	
 	public let slug: String?;
 	public let city: String?;
-	public let location: String?; //Available in REST API, missing in documentation
+	
+	// notes: Available in REST API, missing in documentation
+	public let location: String?;
 	
 	public let createdAt: NSDate?;
 	public let checkPointTime: NSDate?;
