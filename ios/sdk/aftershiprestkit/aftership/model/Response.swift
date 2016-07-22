@@ -50,7 +50,7 @@ extension Response {
 		self.init(json: json);
 	}
 	
-	init?(json: [String: AnyObject]) {
+	public init?(json: [String: AnyObject]) {
 		self.json = json;
 		
 		guard let metadataJson = json["meta"] as? [String: AnyObject],

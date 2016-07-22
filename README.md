@@ -18,6 +18,7 @@ This module provides a swifty interface to interact with [AfterShip REST API](ht
 
 ## Initialize the client
 This module is designed to be easy to use with type checking and allow you to extend it for advanced use
+.
 
 	import AfterShipRestKit
 	
@@ -25,7 +26,7 @@ This module is designed to be easy to use with type checking and allow you to ex
 	
 By default it uses *NSURLSession.sharedSession()* to perform the request. You can pass in a seperate NSURLSession object to it or simply implementing the RequestAgent interface if you wish to use other network request library.
 
-	let newSession = NSURLSession();
+	let newSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration());
 	let anotherClient = AfterShipClient(apiKey: apiKey, requestAgent: newSession);
 	
 ##Get a single tracking
@@ -96,8 +97,8 @@ You can use the [extensions feature](https://developer.apple.com/library/ios/doc
 		}
 	} 
 
-##Demo Project
-There is a sample project in [AfterShipApiDemoiOS](ios/aftership.xcworkspace). It requires a AfterShip API key in order to work, [which you can create one here](https://www.aftership.com/apps/api)
+##Playground
+There is a swift playground in [AfterShipApiDemoiOS](ios/aftership.xcworkspace). It requires a AfterShip API key in order to work, [which you can create one here](https://www.aftership.com/apps/api)
 
 ##Development
 Developer should use [aftership.xcworkspace](ios/aftership.xcworkspace) for development. This module does not depend on anything other than XCode.
