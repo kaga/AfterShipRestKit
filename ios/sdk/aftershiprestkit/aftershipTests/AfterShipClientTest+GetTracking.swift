@@ -25,15 +25,15 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	}
 	
 	func testGetTrackingRequestParameters() {
-		XCTAssertNil(GetTrackingRequestParameters(slug: "", trackingNumber: "", fields: nil), "Slug and tracking number can't be empty");
+		XCTAssertNil(GetTrackingRequestParameters(slug: "", trackingNumber: ""), "Slug and tracking number can't be empty");
 		
-		let parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456", fields: [.AftershipId]);
+		let parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456", fieldsToResponse: [.AftershipId]);
 		XCTAssertNotNil(parameters);
 		XCTAssertEqual(parameters?.path, "/trackings/ABC/123456");
 		XCTAssertTrue(parameters!.fields!.contains(TrackingField.AftershipId.rawValue));
 
-		XCTAssertNil(GetTrackingRequestParameters(aftershipId: "", fields: nil), "Aftership id can't be empty");
-		let getByIdParameters = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
+		XCTAssertNil(GetTrackingRequestParameters(aftershipId: ""), "Aftership id can't be empty");
+		let getByIdParameters = GetTrackingRequestParameters(aftershipId: "123456");
 		XCTAssertEqual(getByIdParameters?.path, "/trackings/123456");
 		XCTAssertNil(getByIdParameters?.fields);
 	}
@@ -41,7 +41,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	func testGetTrackingWithOptionalParameters() {
 		let requestExpectation = expectationWithDescription("Get Tracking with optional parameters");
 		
-		var parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456", fields: nil);
+		var parameters = GetTrackingRequestParameters(slug: "ABC", trackingNumber: "123456");
 		parameters?.fields = ["title", "id"];
 		parameters?.responseLanguage = "en";
 		
@@ -64,7 +64,7 @@ class AfterShipClientTest_GetTracking: XCTestCase {
 	func testGetTrackingWithAftershipId() {
 		let requestExpectation = expectationWithDescription("Get Tracking with Aftership ID");
 		
-		let parameters = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
+		let parameters = GetTrackingRequestParameters(aftershipId: "123456");
 		
 		client.getTracking(parameters: parameters!) { (result) in
 			AfterShipAssertSuccessResponse(result);
