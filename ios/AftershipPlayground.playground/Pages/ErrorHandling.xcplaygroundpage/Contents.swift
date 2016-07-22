@@ -2,6 +2,8 @@ import Foundation
 import XCPlayground
 @testable import AfterShipRestKit
 
+XCPlaygroundPage.currentPage.needsIndefiniteExecution = true;
+
 /*:
 The client will internally manage the interaction between the client and server side.
 
@@ -45,3 +47,17 @@ for key in keys {
 	let value = result[key];
 	print("\(value) times that the request have to wait for \(key) seconds before performing ")
 }
+
+//: - experiment: Paste your API key here
+let apiKey = "";
+let client = AfterShipClient(apiKey: apiKey);
+
+//Before performing a request
+client?.rateLimit;
+client?.numberOfRetriesSinceServiceUnavailable;
+
+client?.getTracking(slug: "foo", trackingNumber: "bar", completionHandler: { (result) in
+	//: You can check out the internal status this way
+	client?.rateLimit;
+	client?.numberOfRetriesSinceServiceUnavailable;
+})

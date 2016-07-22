@@ -16,7 +16,9 @@ By default it uses NSURLSession.sharedSession() to perform the request.
 
 let apiKey = "";
 let client = AfterShipClient(apiKey: apiKey);
-
+client?.apiHost;
+client?.apiKey;
+client?.apiVersion;
 /*:
 You can pass in a seperate NSURLSession object to it
 */

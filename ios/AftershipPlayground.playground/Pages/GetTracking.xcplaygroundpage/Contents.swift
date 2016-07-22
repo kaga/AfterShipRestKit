@@ -31,12 +31,12 @@ client?.getTracking(slug: courier, trackingNumber: trackingNumber, completionHan
 /*:
 ##### There is a *GetTrackingRequestParameters* struct which you can configure all the parameters
 */
-let getByAftershipId = GetTrackingRequestParameters(aftershipId: "123456", fields: nil);
-let getBySlugAndTrackingNumber = GetTrackingRequestParameters(slug: "dhl", trackingNumber: "123456", fields: nil);
+let getByAftershipId = GetTrackingRequestParameters(aftershipId: "123456");
+let getBySlugAndTrackingNumber = GetTrackingRequestParameters(slug: "dhl", trackingNumber: "123456");
 
 //: The fields parameters have a friendly enum
 var getWithOptionalFields = GetTrackingRequestParameters(aftershipId: "123456",
-                                                         fields: [.Title, .AftershipId]);
+                                                         fieldsToResponse: [.Title, .AftershipId]);
 
 //: It is perfectly fine to do this if the TrackingField enum doesn't provide what you need.
 getWithOptionalFields?.fields?.append("order_id");
