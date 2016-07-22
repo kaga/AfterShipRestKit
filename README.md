@@ -40,9 +40,9 @@ By default it uses *NSURLSession.sharedSession()* to perform the request. You ca
 			}
 	});
 	
-Response will be returned as a Successful/Error enumeration. It is recommmended to enumerate both case and avoid the use of default case. 
+Response will be returned as a Successful/Error enumeration. It is recommended to enumerate both case and avoid the use of default case. 
 
-On successful case, it will return the Response object which you can use its computed properties to retrive the values you need. You can also go straight into the raw object if necessary.
+On successful case, it will return the Response object which you can use its computed properties to retrieve the values you need. You can also go straight into the raw object if necessary.
 	
 	//You can get the raw values for the response
 	let json: [String: AnyObject] = response.json;
@@ -79,10 +79,10 @@ The client will internally manage the interaction between the client and server 
 #### Rate Limit
 The client will refuse to make any request if the user has reached the API's maximum request rate. 
 
-#### Expontential Backoff
+#### Exponential Backoff
 If the client has not reached the maximum request rate but the service previously return 429 or 500 errors, a delay will be applied before performing the request. The delay time will be calculated using exponential backoff with jitter.
 	
-The exponential backoff effect will be reset after inactivity for some time or sevice returned successful response.
+The exponential backoff effect will be reset after inactivity for some time or service returned successful response.
  
 ## Extending the client
 You can use the [extensions feature](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html) in swift to support more API endpoints.

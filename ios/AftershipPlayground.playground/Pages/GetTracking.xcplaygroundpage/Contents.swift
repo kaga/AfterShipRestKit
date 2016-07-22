@@ -51,7 +51,7 @@ if let requestParameters = getByAftershipId {
 		case .Error(let errorType):
 			errorType;
 		}
-	})
+	});
 }
 
 //: [Want to crate a tracking? See the next section](CreateTracking)

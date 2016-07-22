@@ -1,6 +1,0 @@
-# .slather.yml
-coverage_service: cobertura_xml
-xcodeproj: ./ios/sdk/aftershipsdk/aftership.xcodeproj  
-scheme: aftership  
-output_directory: ./test-reports  
-#ignore:  
