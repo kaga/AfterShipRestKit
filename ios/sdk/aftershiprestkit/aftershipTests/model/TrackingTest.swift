@@ -115,6 +115,15 @@ class TrackingTest: XCTestCase {
 		let trackingShipDateString = model.json[TrackingField.TrackingShipDate.rawValue] as? String;
 		XCTAssertEqual(trackingShipDateString, "19700101", "Expected to be YYYYMMDD format");				
 	}
+	
+	func testShipmentWithoutAUnit() {
+		let model = Tracking(json: [
+			"shipment_package_count":24,
+			"shipment_type":"25",
+			"shipment_weight":26,
+			]);
+		XCTAssertNil(model.shipment, "Missing a unit type, so 26 what?!");
+	}
 }
 
 extension NSDate {
