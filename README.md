@@ -11,7 +11,7 @@ This module provides a swifty interface to interact with [AfterShip REST API](ht
 	
 	> git subtree add --prefix frameworks/AfterShipRestKit http://github.com/kaga/CwwAAQ8BDgsBBwYEBAQKCA master --squash
 	 	
-2. Drag [ios/sdk/aftershiprestkit/aftershiprestkit.xcodeproj](ios/sdk/aftershiprestkit/aftershiprestkit.xcodeproj) into your own project
+2. Drag [ios/aftershiprestkit/aftershiprestkit.xcodeproj](ios/aftershiprestkit/aftershiprestkit.xcodeproj) into your own project
 3. In project setting, add the framework to Embedded Binaries and Linked Frameworks and Libraries to targets that you are intended to use the library. This module supports iOS and watchOS. 
 
 ![Step 3 Screenshot](./screenshots/import_frameworks.png)
@@ -98,7 +98,7 @@ You can use the [extensions feature](https://developer.apple.com/library/ios/doc
 	} 
 
 ##Playground
-There is a swift playground in [AfterShipApiDemoiOS](ios/aftership.xcworkspace). It requires a AfterShip API key in order to work, [which you can create one here](https://www.aftership.com/apps/api)
+There is a [swift playground to play around this project](ios/aftership.xcworkspace). It requires a AfterShip API key in order to work, [which you can create one here](https://www.aftership.com/apps/api).
 
 ##Development
 Developer should use [aftership.xcworkspace](ios/aftership.xcworkspace) for development. This module does not depend on anything other than XCode.

@@ -5,6 +5,6 @@
       location = "group:AftershipPlayground.playground">
    </FileRef>
    <FileRef
-      location = "group:sdk/aftershiprestkit/aftershiprestkit.xcodeproj">
+      location = "group:aftershiprestkit/aftershiprestkit.xcodeproj">
    </FileRef>
 </Workspace>
