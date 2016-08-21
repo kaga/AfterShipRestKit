@@ -1,7 +1,7 @@
 #AfterShipRestKit
 
-[![Build Status](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA.svg?branch=master)](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA)
-[![codecov](https://codecov.io/gh/kaga/CwwAAQ8BDgsBBwYEBAQKCA/branch/master/graph/badge.svg)](https://codecov.io/gh/kaga/CwwAAQ8BDgsBBwYEBAQKCA)
+[![Build Status](https://travis-ci.org/kaga/CwwAAQ8BDgsBBwYEBAQKCA.svg?branch=master)](https://travis-ci.org/kaga/AfterShipRestKit)
+[![codecov](https://codecov.io/gh/kaga/AfterShipRestKit/branch/master/graph/badge.svg)](https://codecov.io/gh/kaga/AfterShipRestKit)
 
 This module provides a swifty interface to interact with [AfterShip REST API](https://www.aftership.com/docs/api/4). It is also my solution to [one of the AfterShip challanges on GitHub](https://github.com/AfterShip/challenge/tree/mobile-1)
 
